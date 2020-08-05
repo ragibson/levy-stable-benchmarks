@@ -1,14 +1,22 @@
-from algorithms.our_monte_carlo import pdf, cdf
 from benchmarks.test_accuracy_against_table import test_accuracy_against_table
-from benchmarks.import_stable_tables import import_nolan_quantiles
+from benchmarks.import_stable_tables import import_nolan_quantiles, import_stable_tables
 from time import time
 
-table = import_nolan_quantiles()
-start_time = time()
-acc = test_accuracy_against_table(cdf, table, tol=1e-2, show_progress=True)
-duration = time() - start_time
-print(f"Accuracy: {100 * acc:.1f}% in {duration:.1f} s")
 
-# Preliminary CDF results (tol=1e-2):
-# scipy_best 1.5.2       -- Accuracy: 62.6% in 106.4 s
-# our_monte_carlo        -- Accuracy: 60.7% in 4.6 s
+def test(pdf, cdf, tol):
+    tables = [import_stable_tables("data/pdf_table.dat"),
+              import_stable_tables("data/cdf_table.dat"),
+              import_stable_tables("data/quantile_table.dat", expect_quantiles=True),
+              import_nolan_quantiles()]
+    descriptions = ["PDF table", "CDF table", "Quantile table", "Nolan quantiles"]
+    funcs = [pdf, cdf, cdf, cdf]
+
+    for table, description, func in zip(tables, descriptions, funcs):
+        start_time = time()
+        acc = test_accuracy_against_table(func, table, tol=tol, show_progress=True)
+        duration = time() - start_time
+        per_call = duration / len(table)
+        print(f"{description} accuracy: {100 * acc:.1f}% in {duration:.1f} s")
+        print(f"Avg duration: "
+              f"{per_call / 1e-6 if per_call < 1e-3 else per_call / 1e-3 if per_call < 1 else per_call:.2f} "
+              f"{'us' if per_call < 1e-3 else 'ms' if per_call < 1 else 's'}")

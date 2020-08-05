@@ -1,9 +1,10 @@
 # see https://github.com/josemiotto/pylevy
+from levy import levy
 
 
 def pdf(x, alpha, beta):
-    raise NotImplementedError("pdf is not implemented")
+    return levy(x, alpha=alpha, beta=beta, cdf=False)
 
 
 def cdf(x, alpha, beta):
-    raise NotImplementedError("cdf is not implemented")
+    return levy(x, alpha=alpha, beta=beta, cdf=True)
