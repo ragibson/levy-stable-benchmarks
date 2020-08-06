@@ -1,8 +1,54 @@
 # levy-stable-benchmarks
 
+TODO: ensure all percentages are truncated (not rounded)
+
 ## CDF accuracy percentages
 
 ### CDF table (-100 <= x <= 100)
+
+<table>
+  <tr>
+    <td></td><td colspan="4">Absolute Tolerance</td><td>Average Time Per Call</td>
+  </tr>
+  <tr>
+    <td>Method</td><td>1E-2</td><td>1E-3</td><td>1E-4</td><td>1E-5</td>
+  </tr>
+  <tr>
+    <td>`simple_monte_carlo`</td>
+    <td></td><td></td><td></td><td></td>
+    <td>172 us</td>
+  </tr>
+  <tr>
+    <td>`simple_quadrature`</td>
+    <td></td><td></td><td></td><td></td>
+    <td></td>
+  </tr>
+  <tr>
+    <td>`pylevy_miotto`</td>
+    <td></td><td></td><td></td><td></td>
+    <td></td>
+  </tr>
+  <tr>
+    <td>`scipy_best`</td>
+    <td></td><td></td><td></td><td></td>
+    <td></td>
+  </tr>
+  <tr>
+    <td>`scipy_quadrature`</td>
+    <td></td><td></td><td></td><td></td>
+    <td></td>
+  </tr>
+  <tr>
+    <td>`scipy_zolotarev`</td>
+    <td></td><td></td><td></td><td></td>
+    <td></td>
+  </tr>
+  <tr>
+    <td>`pystable_jones`</td>
+    <td></td><td></td><td></td><td></td>
+    <td></td>
+  </tr>
+</table>
 
 <table>
   <tr>
@@ -42,6 +88,50 @@
 
 <table>
   <tr>
+    <td></td><td colspan="4">Absolute Tolerance</td><td>Average Time Per Call</td>
+  </tr>
+  <tr>
+    <td>Method</td><td>1E-2</td><td>1E-3</td><td>1E-4</td><td>1E-5</td>
+  </tr>
+  <tr>
+    <td>`simple_monte_carlo`</td>
+    <td></td><td></td><td></td><td></td>
+    <td>172 us</td>
+  </tr>
+  <tr>
+    <td>`simple_quadrature`</td>
+    <td></td><td></td><td></td><td></td>
+    <td></td>
+  </tr>
+  <tr>
+    <td>`pylevy_miotto`</td>
+    <td></td><td></td><td></td><td></td>
+    <td></td>
+  </tr>
+  <tr>
+    <td>`scipy_best`</td>
+    <td></td><td></td><td></td><td></td>
+    <td></td>
+  </tr>
+  <tr>
+    <td>`scipy_quadrature`</td>
+    <td></td><td></td><td></td><td></td>
+    <td></td>
+  </tr>
+  <tr>
+    <td>`scipy_zolotarev`</td>
+    <td></td><td></td><td></td><td></td>
+    <td></td>
+  </tr>
+  <tr>
+    <td>`pystable_jones`</td>
+    <td></td><td></td><td></td><td></td>
+    <td></td>
+  </tr>
+</table>
+
+<table>
+  <tr>
     <td></td><td colspan="4">Relative Tolerance</td><td>Average Time Per Call</td>
   </tr>
   <tr>
@@ -75,6 +165,52 @@
 </table>
 
 ### Nolan Quantile table (0.00001 <= p <= 0.99999)
+
+TODO: Note there are errors here?
+
+<table>
+  <tr>
+    <td></td><td colspan="4">Absolute Tolerance</td><td>Average Time Per Call</td>
+  </tr>
+  <tr>
+    <td>Method</td><td>1E-2</td><td>1E-3</td><td>1E-4</td><td>1E-5</td>
+  </tr>
+  <tr>
+    <td>`simple_monte_carlo`</td>
+    <td></td><td></td><td></td><td></td>
+    <td>172 us</td>
+  </tr>
+  <tr>
+    <td>`simple_quadrature`</td>
+    <td></td><td></td><td></td><td></td>
+    <td></td>
+  </tr>
+  <tr>
+    <td>`pylevy_miotto`</td>
+    <td></td><td></td><td></td><td></td>
+    <td></td>
+  </tr>
+  <tr>
+    <td>`scipy_best`</td>
+    <td></td><td></td><td></td><td></td>
+    <td></td>
+  </tr>
+  <tr>
+    <td>`scipy_quadrature`</td>
+    <td></td><td></td><td></td><td></td>
+    <td></td>
+  </tr>
+  <tr>
+    <td>`scipy_zolotarev`</td>
+    <td></td><td></td><td></td><td></td>
+    <td></td>
+  </tr>
+  <tr>
+    <td>`pystable_jones`</td>
+    <td></td><td></td><td></td><td></td>
+    <td></td>
+  </tr>
+</table>
 
 <table>
   <tr>
@@ -113,6 +249,50 @@
 ## PDF accuracy percentages
 
 ### PDF table (-100 <= x <= 100)
+
+<table>
+  <tr>
+    <td></td><td colspan="4">Absolute Tolerance</td><td>Average Time Per Call</td>
+  </tr>
+  <tr>
+    <td>Method</td><td>1E-4</td><td>1E-5</td><td>1E-6</td><td>1E-7</td>
+  </tr>
+  <tr>
+    <td>`simple_monte_carlo`</td>
+    <td></td><td></td><td></td><td></td>
+    <td>172 us</td>
+  </tr>
+  <tr>
+    <td>`simple_quadrature`</td>
+    <td></td><td></td><td></td><td></td>
+    <td></td>
+  </tr>
+  <tr>
+    <td>`pylevy_miotto`</td>
+    <td></td><td></td><td></td><td></td>
+    <td></td>
+  </tr>
+  <tr>
+    <td>`scipy_best`</td>
+    <td></td><td></td><td></td><td></td>
+    <td></td>
+  </tr>
+  <tr>
+    <td>`scipy_quadrature`</td>
+    <td></td><td></td><td></td><td></td>
+    <td></td>
+  </tr>
+  <tr>
+    <td>`scipy_zolotarev`</td>
+    <td></td><td></td><td></td><td></td>
+    <td></td>
+  </tr>
+  <tr>
+    <td>`pystable_jones`</td>
+    <td></td><td></td><td></td><td></td>
+    <td></td>
+  </tr>
+</table>
 
 <table>
   <tr>

@@ -13,6 +13,4 @@ def pdf(x, alpha, beta):
 
 
 def cdf(x, alpha, beta):
-    # cdf computation is the same as the "best" method
-    x += beta * tan(pi * alpha / 2)
-    return levy_stable.cdf(x, alpha, beta)
+    raise NotImplementedError("Setting pdf_default_method does not affect CDF calculation. Use scipy_best instead.")

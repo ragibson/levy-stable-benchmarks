@@ -16,7 +16,7 @@ def test(pdf, cdf, tol):
         acc = test_accuracy_against_table(func, table, tol=tol, show_progress=True)
         duration = time() - start_time
         per_call = duration / len(table)
-        print(f"{description} accuracy: {100 * acc:.1f}% in {duration:.1f} s")
+        print(f"{description} accuracy: {100 * acc}% in {duration:.1f} s")
         print(f"Avg duration: "
               f"{per_call / 1e-6 if per_call < 1e-3 else per_call / 1e-3 if per_call < 1 else per_call:.2f} "
               f"{'us' if per_call < 1e-3 else 'ms' if per_call < 1 else 's'}")

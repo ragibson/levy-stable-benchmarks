@@ -16,9 +16,8 @@ def sorted_levy_stable_rvs(alpha, beta):
         rvs = ((pi / 2 + beta * U) * tan(U) - beta * log((pi * W * cos(U) / 2) / (pi / 2 + beta * U))) / xi
     else:
         rvs = (1 + zeta ** 2) ** (1 / (2 * alpha)) * sin(alpha * (U + xi)) / cos(U) ** (1 / alpha) * \
-              (cos(U - alpha * (U + xi)) / W) ** ((1 - alpha) / alpha)
+              (cos(U - alpha * (U + xi)) / W) ** ((1 - alpha) / alpha) + zeta
 
-    rvs += zeta
     rvs.sort()
     return rvs
 
