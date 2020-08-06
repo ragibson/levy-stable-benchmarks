@@ -4,12 +4,12 @@ from time import time
 
 
 def test(pdf, cdf, tol):
-    tables = [import_stable_tables("data/pdf_table.dat"),
-              import_stable_tables("data/cdf_table.dat"),
+    tables = [import_stable_tables("data/cdf_table.dat"),
               import_stable_tables("data/quantile_table.dat", expect_quantiles=True),
-              import_nolan_quantiles()]
-    descriptions = ["PDF table", "CDF table", "Quantile table", "Nolan quantiles"]
-    funcs = [pdf, cdf, cdf, cdf]
+              import_nolan_quantiles(),
+              import_stable_tables("data/pdf_table.dat")]
+    descriptions = ["CDF table", "Quantile table", "Nolan quantiles", "PDF table"]
+    funcs = [cdf, cdf, cdf, pdf]
 
     for table, description, func in zip(tables, descriptions, funcs):
         start_time = time()
