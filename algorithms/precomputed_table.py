@@ -2,6 +2,7 @@ _PDF_CDF_TABLE = {}
 
 
 def set_table(table):
+    global _PDF_CDF_TABLE
     _PDF_CDF_TABLE = table
 
 

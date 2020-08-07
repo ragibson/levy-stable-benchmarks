@@ -1,9 +1,14 @@
-from benchmarks.test_accuracy_against_table import test_accuracy_against_table
+from benchmarks.table_computations import test_accuracy_against_table
 from benchmarks.import_stable_tables import import_nolan_quantiles, import_stable_tables
 from time import time
 
 
 def test(pdf, cdf, tol):
+    if pdf is None:
+        pdf = lambda x, alpha, beta: 0
+    if cdf is None:
+        cdf = lambda x, alpha, beta: 0
+
     tables = [import_stable_tables("data/cdf_table.dat"),
               import_stable_tables("data/quantile_table.dat", expect_quantiles=True),
               import_nolan_quantiles(),
