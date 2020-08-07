@@ -24,7 +24,7 @@ def sorted_levy_stable_rvs(alpha, beta):
 
 def pdf(x, alpha, beta):
     # TODO: is there a good way to do this?
-    return cdf(x + 0.5, alpha, beta) - cdf(x - 0.5, alpha, beta)
+    raise NotImplementedError("Monte Carlo PDF calculations are not currently implemented")
 
 
 def cdf(x, alpha, beta):

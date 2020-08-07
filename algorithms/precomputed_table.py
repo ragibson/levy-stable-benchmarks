@@ -1,14 +1,22 @@
-_PDF_CDF_TABLE = {}
+class PrecomputedTableAlgorithm:
+    def __init__(self, pdf_table=None, cdf_table=None):
+        self.pdf_table = pdf_table
+        self.cdf_table = cdf_table
 
+    def pdf(self, x, alpha, beta):
+        if self.pdf_table is None:
+            return 0
+        return self.pdf_table[(x, alpha, beta)]
 
-def set_table(table):
-    global _PDF_CDF_TABLE
-    _PDF_CDF_TABLE = table
+    def cdf(self, x, alpha, beta):
+        if self.cdf_table is None:
+            return 0
+        return self.cdf_table[(x, alpha, beta)]
 
 
 def pdf(x, alpha, beta):
-    return _PDF_CDF_TABLE[(x, alpha, beta)]
+    raise NotImplementedError("No table specified. Use the PrecomputedTableAlgorithm class.")
 
 
 def cdf(x, alpha, beta):
-    return _PDF_CDF_TABLE[(x, alpha, beta)]
+    raise NotImplementedError("No table specified. Use the PrecomputedTableAlgorithm class.")
