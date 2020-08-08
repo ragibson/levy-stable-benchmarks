@@ -308,6 +308,14 @@ TODO: pylevy_miotto parameter limitations
 
 TODO: simple_quadrature limitations and potential hybrid scheme
 
+##### simple_monte_carlo appears far slower in practice than listed here. Why?
+
 ##### These methods vary greatly in their speed. What is a "good" average time per call? 
 
+TODO: highly domain specific, etc.
+
 ##### Some of the methods only appear in the PDF or CDF tests. Why?
+
+##### I know of a Python library that is missing from this benchmark. Can you add it?
+
+TODO: please raise an issue and I'll try to add it.
