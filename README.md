@@ -1,22 +1,21 @@
 # levy-stable-benchmarks
 
-TODO: add figures here
+Stable distributions (sometimes called Lévy alpha-stable distributions) are
+important for modelling data across several disciplines including signal
+processing, physics, and finance. Despite this, many Python libraries
+provide buggy and/or inaccurate implementations for computing its PDF/CDF.
 
-TODO: add Notes and FAQ
+This repository attempts to define a benchmark to test the accuracy of such
+implementations.
 
-    percentages are truncated, not rounded
-    Nolan quantile table may have some inaccuracies
-    pylevy_miotto parameter limitations
-    simple_quadrature limitations and potential hybrid scheme
-    composite accuracy?
-    Where did these tables come from? What are they?
-    "good" average time per call?
-    testing machine specs
-    large_monte_carlo?
-    scipy_methods only in PDF?
-    Why would I want absolute vs relative tolerance?
-    CDF vs PDF absolute tolerances are different?
+![accuracy figures](figures/accuracy_figures.png)
 
+# Table of Contents
+  * [CDF accuracy percentages](#CDFAccuracy)
+  * [PDF accuracy percentages](#PDFAccuracy)
+  * [FAQ, notes, and limitations](#FAQ)
+
+<a name = "CDFAccuracy"></a>
 ## CDF accuracy percentages
 
 ### CDF table (-100 <= x <= 100)
@@ -205,6 +204,7 @@ TODO: add Notes and FAQ
   </tr>
 </table>
 
+<a name = "PDFAccuracy"></a>
 ## PDF accuracy percentages
 
 ### PDF table (-100 <= x <= 100)
@@ -278,3 +278,36 @@ TODO: add Notes and FAQ
     <td></td>
   </tr>
 </table>
+
+<a name = "FAQ"></a>
+## FAQ: notes and limitations
+
+TODO: table of contents for FAQ?
+
+##### How are "accuracy percentage" and "composite accuracy" defined?
+
+TODO: truncated, not rounded. composite accuracy?
+
+##### Where did these PDF/CDF tables come from? Are they accurate?
+
+TODO: Nolan quantile table may have some inaccuracies
+
+##### What are some known limitations of this benchmark?
+
+##### Why is the range of tested absolute tolerances different for CDF vs. PDF?
+
+##### Where can I find the libraries tested?
+
+TODO: large_monte_carlo?
+
+##### pylevy_miotto appears somewhat accurate in practice. Why does it perform so poorly in this benchmark?
+
+TODO: pylevy_miotto parameter limitations
+
+##### simple_quadrature seems very accurate. Is this always the case?
+
+TODO: simple_quadrature limitations and potential hybrid scheme
+
+##### These methods vary greatly in their speed. What is a "good" average time per call? 
+
+##### Some of the methods only appear in the PDF or CDF tests. Why?
