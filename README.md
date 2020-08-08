@@ -300,6 +300,16 @@ TODO: Nolan quantile table may have some inaccuracies
 
 TODO: large_monte_carlo?
 
+##### The literature is very inconsistent/fragmented with respect to parameterizing stable distributions. Are you sure the libraries are actually consistent in their calculations here?
+
+TODO: Mark Veillette says this well:
+
+> One of the most frustrating issues in dealing with alpha-stable distribtuions is that its parameterization is not consistent across the literature (there are over half a dozen parameterizations). [...] The most common way to specify a parameterization is to look at the characteristic function of the alpha-stable random variable.
+>
+> One further annoyance is that the names of the 4 parameters are also inconsistent. [...] The letters alpha and beta are used almost everywhere you look, while the other two parameters are almost always different.
+
+TODO: will probably need to add tests to prove our transformations are good
+
 ##### pylevy_miotto appears somewhat accurate in practice. Why does it perform so poorly in this benchmark?
 
 TODO: pylevy_miotto parameter limitations
