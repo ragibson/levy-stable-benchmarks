@@ -6,8 +6,9 @@ import sys
 
 if __name__ == "__main__":
     try:
-        cdf_methods = [simple_quadrature, simple_monte_carlo, scipy_best, pylevy_miotto]
-        cdf_method_names = ["simple_quadrature", "simple_monte_carlo", "scipy_best", "pylevy_miotto"]
+        cdf_methods = [simple_quadrature, simple_monte_carlo, larger_monte_carlo, scipy_best, pylevy_miotto]
+        cdf_method_names = ["simple_quadrature", "simple_monte_carlo", "larger_monte_carlo", "scipy_best",
+                            "pylevy_miotto"]
 
         pdf_methods = [simple_quadrature, scipy_best, scipy_zolotarev, scipy_quadrature, pylevy_miotto]
         pdf_method_names = ["simple_quadrature", "scipy_best", "scipy_zolotarev", "scipy_quadrature", "pylevy_miotto"]
