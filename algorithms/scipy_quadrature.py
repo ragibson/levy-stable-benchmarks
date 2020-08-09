@@ -4,10 +4,9 @@
 from numpy import tan, pi
 from scipy.stats import levy_stable
 
-levy_stable.pdf_default_method = "quadrature"
-
 
 def pdf(x, alpha, beta):
+    levy_stable.pdf_default_method = "quadrature"
     x += beta * tan(pi * alpha / 2)
     return levy_stable.pdf(x, alpha, beta)
 

@@ -21,6 +21,8 @@ def pdf(x, alpha, beta, tol=1e-8, limit=10 ** 3):
         res2, error2 = quad(lambda t: exp(-t ** alpha) * sin(t ** alpha * phi_constant), 0, inf,
                             epsabs=tol, limit=limit, weight="sin", wvar=x + phi_constant)
         res = (res1 + res2) / pi
+
+    # TODO: need to handle error == 0.0 bug in weighted quad(); will probably fallback to unweighted quad
     return max(res, 0)
 
 
