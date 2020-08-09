@@ -4,14 +4,19 @@ from algorithms import (pylevy_miotto,
 from scipy.optimize import minimize_scalar
 import unittest
 
+simple_monte_carlo.set_monte_carlo_size(10 ** 7)
 
-def make_test(pdf=None, cdf=None, decimal_places_tolerance=10, is_known_bug_func=None):
-    if is_known_bug_func is None:
-        is_known_bug_func = lambda alpha, beta: False
+
+def make_test(pdf=None, cdf=None, decimal_places_tolerance=10, is_known_bug_cdf=None, is_known_bug_pdf=None):
+    if is_known_bug_cdf is None:
+        is_known_bug_cdf = lambda alpha, beta: False
+
+    if is_known_bug_pdf is None:
+        is_known_bug_pdf = lambda alpha, beta: False
 
     class TestParameterizationConsistency(unittest.TestCase):
-        alpha_testing_grid = [0.5, 1.0, 1.5, 2.0]
-        beta_testing_grid = [-1.0, -0.5, 0.0, 0.5, 1.0]
+        alpha_testing_grid = [0.25, 0.5, 0.75, 1.0, 1.25, 1.5, 1.75, 2.0]
+        beta_testing_grid = [-1.0, -0.75, -0.5, -0.25, 0.0, 0.25, 0.5, 0.75, 1.0]
 
         @staticmethod
         def compute_mode(func):
@@ -35,41 +40,35 @@ def make_test(pdf=None, cdf=None, decimal_places_tolerance=10, is_known_bug_func
         def check_similar_cdf_medians(self, alpha, beta):
             # we assume our simple_quadrature is accurate here
             # at the very least, it can be used as a consistent benchmark
-            print(f"testing median alpha={alpha}, beta={beta} (correct)")
             correct_median = self.compute_median_from_cdf(lambda x: simple_quadrature.cdf(x, alpha=alpha, beta=beta))
-            print(f"testing median alpha={alpha}, beta={beta} (func)")
             median = self.compute_median_from_cdf(lambda x: cdf(x, alpha=alpha, beta=beta))
-
-            print(
-                f"Simple_quadrature found median={correct_median} CDF={simple_quadrature.cdf(correct_median, alpha=alpha, beta=beta)}")
-            print(f"func found median={median} CDF={cdf(median, alpha=alpha, beta=beta)}")
 
             self.assertAlmostEqual(correct_median, median, places=decimal_places_tolerance,
                                    msg=f"medians differ for alpha={alpha}, beta={beta}")
 
         def check_similar_pdf_scales(self, alpha, beta):
-            correct_neg1 = simple_quadrature.pdf(-1, alpha=alpha, beta=beta)
-            correct_pos1 = simple_quadrature.pdf(1, alpha=alpha, beta=beta)
+            correct_neg2 = simple_quadrature.pdf(-2, alpha=alpha, beta=beta)
+            correct_pos2 = simple_quadrature.pdf(2, alpha=alpha, beta=beta)
 
-            neg1 = pdf(-1, alpha=alpha, beta=beta)
-            pos1 = pdf(1, alpha=alpha, beta=beta)
+            neg2 = pdf(-2, alpha=alpha, beta=beta)
+            pos2 = pdf(2, alpha=alpha, beta=beta)
 
-            self.assertAlmostEqual(correct_neg1, neg1, places=decimal_places_tolerance,
-                                   msg=f"scales (pdf at -1) differ for alpha={alpha}, beta={beta}")
-            self.assertAlmostEqual(correct_pos1, pos1, places=decimal_places_tolerance,
-                                   msg=f"scales (pdf at +1) differ for alpha={alpha}, beta={beta}")
+            self.assertAlmostEqual(correct_neg2, neg2, places=decimal_places_tolerance,
+                                   msg=f"scales (pdf at -2) differ for alpha={alpha}, beta={beta}")
+            self.assertAlmostEqual(correct_pos2, pos2, places=decimal_places_tolerance,
+                                   msg=f"scales (pdf at +2) differ for alpha={alpha}, beta={beta}")
 
         def check_similar_cdf_scales(self, alpha, beta):
-            correct_neg1 = simple_quadrature.cdf(-1, alpha=alpha, beta=beta)
-            correct_pos1 = simple_quadrature.cdf(1, alpha=alpha, beta=beta)
+            correct_neg2 = simple_quadrature.cdf(-2, alpha=alpha, beta=beta)
+            correct_pos2 = simple_quadrature.cdf(2, alpha=alpha, beta=beta)
 
-            neg1 = cdf(-1, alpha=alpha, beta=beta)
-            pos1 = cdf(1, alpha=alpha, beta=beta)
+            neg2 = cdf(-2, alpha=alpha, beta=beta)
+            pos2 = cdf(2, alpha=alpha, beta=beta)
 
-            self.assertAlmostEqual(correct_neg1, neg1, places=decimal_places_tolerance,
-                                   msg=f"scales (cdf at -1) differ for alpha={alpha}, beta={beta}")
-            self.assertAlmostEqual(correct_pos1, pos1, places=decimal_places_tolerance,
-                                   msg=f"scales (pdf at +1) differ for alpha={alpha}, beta={beta}")
+            self.assertAlmostEqual(correct_neg2, neg2, places=decimal_places_tolerance,
+                                   msg=f"scales (cdf at -2) differ for alpha={alpha}, beta={beta}")
+            self.assertAlmostEqual(correct_pos2, pos2, places=decimal_places_tolerance,
+                                   msg=f"scales (pdf at +2) differ for alpha={alpha}, beta={beta}")
 
         def test_modes(self):
             if pdf is None:
@@ -77,7 +76,7 @@ def make_test(pdf=None, cdf=None, decimal_places_tolerance=10, is_known_bug_func
 
             for alpha in self.alpha_testing_grid:
                 for beta in self.beta_testing_grid:
-                    if is_known_bug_func(alpha, beta):
+                    if is_known_bug_pdf(alpha, beta):
                         continue
                     self.check_similar_pdf_modes(alpha, beta)
 
@@ -87,7 +86,7 @@ def make_test(pdf=None, cdf=None, decimal_places_tolerance=10, is_known_bug_func
 
             for alpha in self.alpha_testing_grid:
                 for beta in self.beta_testing_grid:
-                    if is_known_bug_func(alpha, beta):
+                    if is_known_bug_cdf(alpha, beta):
                         continue
                     self.check_similar_cdf_medians(alpha, beta)
 
@@ -97,7 +96,7 @@ def make_test(pdf=None, cdf=None, decimal_places_tolerance=10, is_known_bug_func
 
             for alpha in self.alpha_testing_grid:
                 for beta in self.beta_testing_grid:
-                    if is_known_bug_func(alpha, beta):
+                    if is_known_bug_pdf(alpha, beta):
                         continue
                     self.check_similar_pdf_scales(alpha, beta)
 
@@ -107,16 +106,57 @@ def make_test(pdf=None, cdf=None, decimal_places_tolerance=10, is_known_bug_func
 
             for alpha in self.alpha_testing_grid:
                 for beta in self.beta_testing_grid:
-                    if is_known_bug_func(alpha, beta):
+                    if is_known_bug_cdf(alpha, beta):
                         continue
                     self.check_similar_cdf_scales(alpha, beta)
 
     return TestParameterizationConsistency
 
 
+class TestPylevyMiotto(make_test(pdf=pylevy_miotto.pdf, cdf=pylevy_miotto.cdf,
+                                 decimal_places_tolerance=2,
+                                 is_known_bug_pdf=lambda alpha, beta: alpha == 1.0 or alpha < 0.5,
+                                 is_known_bug_cdf=lambda alpha, beta: alpha == 1.0 or alpha < 0.5)):
+    # pylevy_miottos parameterization at alpha = 1 is inconsistent with their alpha != 1
+    # we choose to leave this library buggy rather than fixing this piecewise
+    # alpha < 0.5 is not implemented in this library (they round to alpha = 0.5 in this case)
+    # it is also fairly inaccurate in general, note the tolerance of 2 decimal places here
+    pass
+
+
+class TestScipyBest(make_test(pdf=scipy_best.pdf, cdf=scipy_best.cdf,
+                              decimal_places_tolerance=3,
+                              is_known_bug_pdf=lambda alpha, beta: alpha == 1.0 and beta != 0.0,
+                              is_known_bug_cdf=lambda alpha, beta: alpha == 1.0 and beta != 0.0)):
+    # scipy_best resorts to scipy_quadrature and scipy_zolotarev, both of which are buggy for alpha = 1, beta != 0
+    # scipy_best's CDF calculation is also incredibly inaccurate for alpha = 1, beta != 0
+    pass
+
+
 class TestScipyQuadrature(make_test(pdf=scipy_quadrature.pdf, cdf=None,
                                     decimal_places_tolerance=6,
-                                    is_known_bug_func=lambda alpha, beta: alpha == 1.0 and beta != 0.0)):
+                                    is_known_bug_pdf=lambda alpha, beta: (alpha == 1.0 and beta != 0.0) or
+                                                                         alpha <= 0.25)):
+    # scipy_quadrature returns incredibly inaccurate returns for alpha = 1, beta != 0
+    # it is also pretty inaccurate for small alpha, so we omit these rather than lowering the tolerance
+    pass
+
+
+class TestScipyZolotarev(make_test(pdf=scipy_zolotarev.pdf, cdf=None,
+                                   decimal_places_tolerance=3,
+                                   is_known_bug_pdf=lambda alpha, beta: alpha == 1.0 and beta != 0.0)):
+    # scipy_zolotarev emits a warning that this method is unstable for alpha = 1 and beta != 0.
+    pass
+
+
+class TestSimpleMonteCarlo(make_test(pdf=None, cdf=simple_monte_carlo.cdf,
+                                     decimal_places_tolerance=2)):
+    # simple_monte_carlo is (intentionally) not very accurate, note the tolerance of 2 decimal places here
+    pass
+
+
+class TestSimpleQuadrature(make_test(pdf=simple_quadrature.pdf, cdf=simple_quadrature.cdf,
+                                     decimal_places_tolerance=10)):
     pass
 
 

@@ -310,7 +310,7 @@ TODO: Mark Veillette says this well:
 >
 > One further annoyance is that the names of the 4 parameters are also inconsistent. [...] The letters alpha and beta are used almost everywhere you look, while the other two parameters are almost always different.
 
-TODO: will need to finalize [tests to prove our transformations are good](tests/parameterization_tests.py)
+TODO: see our [tests to prove our transformations are good](tests/parameterization_tests.py)
 
 ##### pylevy_miotto appears somewhat accurate in practice. Why does it perform so poorly in this benchmark?
 

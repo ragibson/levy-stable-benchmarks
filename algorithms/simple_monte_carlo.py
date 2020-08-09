@@ -7,6 +7,13 @@ U = uniform(-pi / 2, pi / 2, size=10 ** 6)
 W = exponential(size=10 ** 6)
 
 
+def set_monte_carlo_size(new_sample_size):
+    # TODO: it would also be nice to be able to set the cache size in a non-hacky way
+    global U, W
+    U = uniform(-pi / 2, pi / 2, size=new_sample_size)
+    W = exponential(size=new_sample_size)
+
+
 @lru_cache(maxsize=25)
 def sorted_levy_stable_rvs(alpha, beta):
     zeta = -beta * tan(pi * alpha / 2)
