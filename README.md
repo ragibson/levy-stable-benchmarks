@@ -82,7 +82,7 @@ such implementations. We also provide some alternative calculation methods.
   </tr>
 </table>
 
-### Quantile table (0.001 <= p <= 0.999)
+### CDF quantile table (0.001 <= p <= 0.999)
 
 <table>
   <tr><td></td><td colspan="4"><b>Absolute</b> Tolerance</td><td>Average Time Per Call</td></tr>
@@ -128,12 +128,12 @@ such implementations. We also provide some alternative calculation methods.
     <td></td>
   </tr>
   <tr>
-  <tr>
     <td>scipy_best</td>
     <td>97.6%</td><td>97.5%</td><td>97.5%</td><td>97.5%</td>
     <td></td>
   </tr>
-  <td>pylevy_miotto</td>
+  <tr>
+    <td>pylevy_miotto</td>
     <td>90.8%</td><td>80.8%</td><td>77.5%</td><td>75.7%</td>
     <td></td>
   </tr>
@@ -144,7 +144,7 @@ such implementations. We also provide some alternative calculation methods.
   </tr>
 </table>
 
-### Nolan Quantile table (0.00001 <= p <= 0.99999)
+### Nolan CDF quantile table (0.00001 <= p <= 0.99999)
 
 <table>
   <tr><td></td><td colspan="4"><b>Absolute</b> Tolerance</td><td>Average Time Per Call</td></tr>
@@ -195,7 +195,7 @@ such implementations. We also provide some alternative calculation methods.
     <td></td>
   </tr>
   <tr>
-  <td>pylevy_miotto</td>
+    <td>pylevy_miotto</td>
     <td>85.8%</td><td>78.3%</td><td>73.5%</td><td>67.5%</td>
     <td></td>
   </tr>
@@ -272,6 +272,150 @@ such implementations. We also provide some alternative calculation methods.
   <tr>
     <td>pylevy_miotto</td>
     <td>83.7%</td><td>51.9%</td><td>27.5%</td><td>15.0%</td>
+    <td></td>
+  </tr>
+  <tr>
+    <td>pystable_jones</td>
+    <td></td><td></td><td></td><td></td>
+    <td></td>
+  </tr>
+</table>
+
+### PDF quantile table (0.001 <= p <= 0.999)
+
+<table>
+  <tr><td></td><td colspan="4"><b>Absolute</b> Tolerance</td><td>Average Time Per Call</td></tr>
+  <tr><td>Method</td><td>1E-4</td><td>1E-5</td><td>1E-6</td><td>1E-7</td><td></td></tr>
+  <tr>
+    <td>simple_quadrature</td>
+    <td></td><td></td><td></td><td></td>
+    <td></td>
+  </tr>
+  <tr>
+    <td>scipy_best</td>
+    <td></td><td></td><td></td><td></td>
+    <td></td>
+  </tr>
+  <tr>
+    <td>scipy_zolotarev</td>
+    <td></td><td></td><td></td><td></td>
+    <td></td>
+  </tr>
+  <tr>
+    <td>scipy_quadrature</td>
+    <td></td><td></td><td></td><td></td>
+    <td></td>
+  </tr>
+  <tr>
+    <td>pylevy_miotto</td>
+    <td></td><td></td><td></td><td></td>
+    <td></td>
+  </tr>
+  <tr>
+    <td>pystable_jones</td>
+    <td></td><td></td><td></td><td></td>
+    <td></td>
+  </tr>
+</table>
+
+<table>
+  <tr><td></td><td colspan="4"><b>Relative</b> Tolerance</td><td>Average Time Per Call</td></tr>
+  <tr><td>Method</td><td>1E-1</td><td>1E-2</td><td>1E-3</td><td>1E-4</td><td></td></tr>
+  <tr>
+    <td>simple_quadrature</td>
+    <td></td><td></td><td></td><td></td>
+    <td></td>
+  </tr>
+  <tr>
+    <td>scipy_best</td>
+    <td></td><td></td><td></td><td></td>
+    <td></td>
+  </tr>
+  <tr>
+    <td>scipy_zolotarev</td>
+    <td></td><td></td><td></td><td></td>
+    <td></td>
+  </tr>
+  <tr>
+    <td>scipy_quadrature</td>
+    <td></td><td></td><td></td><td></td>
+    <td></td>
+  </tr>
+  <tr>
+    <td>pylevy_miotto</td>
+    <td></td><td></td><td></td><td></td>
+    <td></td>
+  </tr>
+  <tr>
+    <td>pystable_jones</td>
+    <td></td><td></td><td></td><td></td>
+    <td></td>
+  </tr>
+</table>
+
+### Nolan PDF quantile table (0.00001 <= p <= 0.99999)
+
+<table>
+  <tr><td></td><td colspan="4"><b>Absolute</b> Tolerance</td><td>Average Time Per Call</td></tr>
+  <tr><td>Method</td><td>1E-4</td><td>1E-5</td><td>1E-6</td><td>1E-7</td><td></td></tr>
+  <tr>
+    <td>simple_quadrature</td>
+    <td></td><td></td><td></td><td></td>
+    <td></td>
+  </tr>
+  <tr>
+    <td>scipy_best</td>
+    <td></td><td></td><td></td><td></td>
+    <td></td>
+  </tr>
+  <tr>
+    <td>scipy_zolotarev</td>
+    <td></td><td></td><td></td><td></td>
+    <td></td>
+  </tr>
+  <tr>
+    <td>scipy_quadrature</td>
+    <td></td><td></td><td></td><td></td>
+    <td></td>
+  </tr>
+  <tr>
+    <td>pylevy_miotto</td>
+    <td></td><td></td><td></td><td></td>
+    <td></td>
+  </tr>
+  <tr>
+    <td>pystable_jones</td>
+    <td></td><td></td><td></td><td></td>
+    <td></td>
+  </tr>
+</table>
+
+<table>
+  <tr><td></td><td colspan="4"><b>Relative</b> Tolerance</td><td>Average Time Per Call</td></tr>
+  <tr><td>Method</td><td>1E-1</td><td>1E-2</td><td>1E-3</td><td>1E-4</td><td></td></tr>
+  <tr>
+    <td>simple_quadrature</td>
+    <td></td><td></td><td></td><td></td>
+    <td></td>
+  </tr>
+  <tr>
+    <td>scipy_best</td>
+    <td></td><td></td><td></td><td></td>
+    <td></td>
+  </tr>
+  <tr>
+    <td>scipy_zolotarev</td>
+    <td></td><td></td><td></td><td></td>
+    <td></td>
+  </tr>
+  <tr>
+    <td>scipy_quadrature</td>
+    <td></td><td></td><td></td><td></td>
+    <td></td>
+  </tr>
+  <tr>
+    <td>pylevy_miotto</td>
+    <td></td><td></td><td></td><td></td>
     <td></td>
   </tr>
   <tr>

@@ -44,12 +44,18 @@ def precompute_table(f, table, show_progress=False, single_threaded=False):
 
 
 def test_all_accuracies(pdf, cdf, tol, tol_is_absolute=False, show_progress=False):
-    tables = [import_stable_tables("data/cdf_table.dat"),
-              import_stable_tables("data/quantile_table.dat", expect_quantiles=True),
-              import_nolan_quantiles(),
-              import_stable_tables("data/pdf_table.dat")]
-    descriptions = ["CDF table", "Quantile table", "Nolan quantiles", "PDF table"]
-    funcs = [cdf, cdf, cdf, pdf]
+    cdf_tables = [import_stable_tables("data/cdf_table.dat"),
+                  import_stable_tables("data/cdf_quantile_table.dat", expect_quantiles=True),
+                  import_nolan_quantiles()]
+    pdf_tables = [import_stable_tables("data/pdf_table.dat"),
+                  import_stable_tables("data/pdf_quantile_table.dat", single_queries=True,
+                                       num_values_expected=len(cdf_tables[1])),
+                  import_stable_tables("data/nolan_pdf_quantile.dat", single_queries=True,
+                                       num_values_expected=len(cdf_tables[2]))]
+    tables = cdf_tables + pdf_tables
+    descriptions = ["CDF table", "CDF quantile table", "Nolan CDF quantiles",
+                    "PDF table", "PDF quantile table", "Nolan PDF quantiles"]
+    funcs = [cdf, cdf, cdf, pdf, pdf, pdf]
 
     for table, description, func in zip(tables, descriptions, funcs):
         start_time = time()

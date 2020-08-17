@@ -1,4 +1,4 @@
-def import_nolan_quantiles(filename="data/quantile.dat"):
+def import_nolan_quantiles(filename="data/nolan_cdf_quantile.dat"):
     """Imports Nolan's table of stable quantities as a list of (alpha, beta, x, p) tuples.
 
     The table is available from http://fs2.american.edu/jpnolan/www/stable/stable.html"""
@@ -40,7 +40,7 @@ def import_nolan_quantiles(filename="data/quantile.dat"):
         return data_list
 
 
-def import_stable_tables(filename, expect_quantiles=False):
+def import_stable_tables(filename, expect_quantiles=False, single_queries=False, num_values_expected=None):
     """Imports table of stable quantities as a list of (alpha, beta, x, p) tuples.
 
     This checks for the format of *our* tables, so it will expect
@@ -62,17 +62,17 @@ def import_stable_tables(filename, expect_quantiles=False):
                 assert lines[line_idx + 1] == "x beta\n"
 
                 split_alpha_header = lines[line_idx + 2].split()
-                assert 10 <= len(split_alpha_header) <= 11
+                assert 10 <= len(split_alpha_header) <= 11 or (single_queries and len(split_alpha_header) == 1)
                 assert all(alpha == split_alpha_header[0] for alpha in split_alpha_header)
                 alpha = float(split_alpha_header[0])
 
                 split_beta_header = lines[line_idx + 3].split()
-                assert 10 <= len(split_beta_header) <= 11
+                assert 10 <= len(split_beta_header) <= 11 or (single_queries and len(split_beta_header) == 1)
                 betas = [float(beta) for beta in split_beta_header]
 
-                for row_offset in range(4, 4 + num_values_per_block):
+                for row_offset in range(4, 4 + num_values_per_block if not single_queries else 5):
                     table_row = lines[line_idx + row_offset].split()
-                    assert 11 <= len(table_row) <= 12
+                    assert 11 <= len(table_row) <= 12 or (single_queries and len(table_row) == 2)
 
                     if expect_quantiles:
                         p = float(table_row[0])
@@ -89,6 +89,9 @@ def import_stable_tables(filename, expect_quantiles=False):
                         for p, beta in zip(ps, betas):
                             data_list.append((alpha, beta, x, p))
 
-        # 39 alpha values, 21 beta values, 1001/999 x/p values
-        assert len(data_list) == 39 * 21 * num_values_per_block
+        if num_values_expected is not None:
+            assert len(data_list) == num_values_expected
+        else:
+            # 39 alpha values, 21 beta values, 1001/999 x/p values
+            assert len(data_list) == 39 * 21 * num_values_per_block
         return data_list
