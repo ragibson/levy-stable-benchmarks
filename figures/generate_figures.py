@@ -17,9 +17,13 @@ if __name__ == "__main__":
         raise
 
     cdf_tables = [import_stable_tables("data/cdf_table.dat"),
-                  import_stable_tables("data/quantile_table.dat", expect_quantiles=True),
+                  import_stable_tables("data/cdf_quantile_table.dat", expect_quantiles=True),
                   import_nolan_quantiles()]
-    pdf_tables = [import_stable_tables("data/pdf_table.dat")]
+    pdf_tables = [import_stable_tables("data/pdf_table.dat"),
+                  import_stable_tables("data/pdf_quantile_table.dat", single_queries=True,
+                                       num_values_expected=len(cdf_tables[1])),
+                  import_stable_tables("data/nolan_pdf_quantile.dat", single_queries=True,
+                                       num_values_expected=len(cdf_tables[2]))]
     num_plotting_points = 100
 
 
@@ -30,10 +34,9 @@ if __name__ == "__main__":
 
 
     def composite_pdf_accuracy_percentage(func, tol, tol_is_absolute):
-        # there is currently only one PDF table
-        assert len(pdf_tables) == 1
-        table = pdf_tables[0]
-        return 100 * test_accuracy_against_table(func, table, tol, tol_is_absolute=tol_is_absolute)
+        # 1/3rd weighting to each PDF table
+        return 100 * np.mean([test_accuracy_against_table(func, table, tol=tol, tol_is_absolute=tol_is_absolute)
+                              for table in pdf_tables])
 
 
     for density_function, use_absolute_tolerances in zip(["CDF", "CDF", "PDF", "PDF"], [True, False, True, False]):

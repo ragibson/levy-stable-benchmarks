@@ -12,6 +12,9 @@ such implementations. We also provide some alternative calculation methods.
 
 ![accuracy figures](figures/accuracy_figures.png)
 
+Note: the new PDF computations for scipy_quadrature will take several days
+to complete. The figure above will be updated then.
+
 # Table of Contents
   * [CDF accuracy percentages](#CDFAccuracy)
   * [PDF accuracy percentages](#PDFAccuracy)
@@ -432,7 +435,16 @@ TODO: table of contents for FAQ?
 
 ##### How are "accuracy percentage" and "composite accuracy" defined?
 
-TODO: truncated, not rounded. composite accuracy?
+"Accuracy percentage" is the percentage of tabulated values computed to the
+desired tolerance.
+
+When listed above, the accuracy percentages are truncated (not rounded), so a
+method will only have 100.0% accuracy if it is within the specified tolerance
+on *all* the test cases.
+
+"Composite accuracy" is the average accuracy percentage on all the PDF or CDF
+tables. There are three tables each for PDF and CDF, so ~33% of the weighting
+goes to each.
 
 ##### Where did these PDF/CDF tables come from? Are they accurate?
 
@@ -440,11 +452,26 @@ TODO: Nolan quantile table may have some inaccuracies, but this needs more testi
 
 ##### What are some known limitations of this benchmark?
 
+TODO: beta < 0 implementation is assumed correct (by symmetry)
+
+TODO: behavior **very** far out (p < 0.00001) into the tails is not tested, but this is probably a minor concern in practice
+
 ##### Why is the range of tested absolute tolerances different for CDF vs. PDF?
 
 ##### Where can I find the libraries tested?
 
-TODO: large_monte_carlo?
+There are six methods tested here. See the links below and the code in [algorithms](algorithms).
+
+ * Our simple methods
+   * [**simple_quadrature**](algorithms/simple_quadrature.py): direct numerical integration (TODO: derivations?)
+   * [**simple_monte_carlo**](algorithms/simple_monte_carlo.py): monte carlo scheme based on the [Chambers-Mallows-Stuck method of simulating stable random variables](https://doi.org/10.1080%2F01621459.1976.10480344)
+   * **larger_monte_carlo**: same as simple_monte_carlo, but with a sample size of 100 million
+ * Scipy's methods (tested on version 1.5.2)
+   * [**scipy_best**](https://docs.scipy.org/doc/scipy/reference/generated/scipy.stats.levy_stable.html) with `pdf_default_method = "best"`
+   * [**scipy_zolotarev**](https://docs.scipy.org/doc/scipy/reference/generated/scipy.stats.levy_stable.html) with `pdf_default_method = "zolotarev"`
+   * [**scipy_quadrature**](https://docs.scipy.org/doc/scipy/reference/generated/scipy.stats.levy_stable.html) with `pdf_default_method = "quadrature"`
+ * [**pylevy_miotto**](https://github.com/josemiotto/pylevy) (tested on commit [64c525f](https://github.com/josemiotto/pylevy/tree/64c525f273d00d89cbbe531a6557b17b74d18f88))
+ * TODO: pystable_jones?
 
 ##### The literature is very inconsistent/fragmented with respect to parameterizing stable distributions. Are you sure the libraries are actually consistent in their calculations here?
 
