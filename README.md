@@ -39,6 +39,11 @@ to complete. The figure above will be updated then.
     <td></td>
   </tr>
   <tr>
+    <td>larger_monte_carlo</td>
+    <td>100.0%</td><td>100.0%</td><td>99.6%</td><td>74.1%</td>
+    <td></td>
+  </tr>
+  <tr>
     <td>scipy_best</td>
     <td>97.8%</td><td>97.4%</td><td>95.4%</td><td>88.4%</td>
     <td></td>
@@ -66,6 +71,11 @@ to complete. The figure above will be updated then.
   <tr>
     <td>simple_monte_carlo</td>
     <td>96.5%</td><td>77.5%</td><td>56.6%</td><td>38.4%</td>
+    <td></td>
+  </tr>
+  <tr>
+    <td>larger_monte_carlo</td>
+    <td>99.3%</td><td>97.3%</td><td>80.1%</td><td>56.8%</td>
     <td></td>
   </tr>
   <tr>
@@ -101,6 +111,11 @@ to complete. The figure above will be updated then.
     <td></td>
   </tr>
   <tr>
+    <td>larger_monte_carlo</td>
+    <td>100.0%</td><td>100.0%</td><td>99.9%</td><td>30.2%</td>
+    <td></td>
+  </tr>
+  <tr>
     <td>scipy_best</td>
     <td>97.5%</td><td>97.5%</td><td>97.5%</td><td>97.5%</td>
     <td></td>
@@ -128,6 +143,11 @@ to complete. The figure above will be updated then.
   <tr>
     <td>simple_monte_carlo</td>
     <td>100.0%</td><td>99.3%</td><td>74.9%</td><td>19.4%</td>
+    <td></td>
+  </tr>
+  <tr>
+    <td>larger_monte_carlo</td>
+    <td>100.0%</td><td>99.9%</td><td>99.5%</td><td>79.0%</td>
     <td></td>
   </tr>
   <tr>
@@ -163,6 +183,11 @@ to complete. The figure above will be updated then.
     <td></td>
   </tr>
   <tr>
+    <td>larger_monte_carlo</td>
+    <td>99.4%</td><td>99.1%</td><td>98.9%</td><td>51.2%</td>
+    <td></td>
+  </tr>
+  <tr>
     <td>scipy_best</td>
     <td>95.6%</td><td>95.2%</td><td>94.7%</td><td>89.6%</td>
     <td></td>
@@ -190,6 +215,11 @@ to complete. The figure above will be updated then.
   <tr>
     <td>simple_monte_carlo</td>
     <td>97.1%</td><td>87.5%</td><td>67.2%</td><td>29.4%</td>
+    <td></td>
+  </tr>
+  <tr>
+    <td>larger_monte_carlo</td>
+    <td>99.4%</td><td>98.0%</td><td>88.3%</td><td>67.8%</td>
     <td></td>
   </tr>
   <tr>
@@ -234,7 +264,7 @@ to complete. The figure above will be updated then.
   </tr>
   <tr>
     <td>scipy_quadrature</td>
-    <td>80.2%</td><td>78.6%</td><td>77.1%</td><td>75.4%</td>
+    <td></td><td></td><td></td><td></td>
     <td></td>
   </tr>
   <tr>
@@ -269,7 +299,7 @@ to complete. The figure above will be updated then.
   </tr>
   <tr>
     <td>scipy_quadrature</td>
-    <td>79.0%</td><td>77.3%</td><td>75.3%</td><td>73.0%</td>
+    <td></td><td></td><td></td><td></td>
     <td></td>
   </tr>
   <tr>
@@ -291,17 +321,17 @@ to complete. The figure above will be updated then.
   <tr><td>Method</td><td>1E-4</td><td>1E-5</td><td>1E-6</td><td>1E-7</td><td></td></tr>
   <tr>
     <td>simple_quadrature</td>
-    <td></td><td></td><td></td><td></td>
+    <td>99.1%</td><td>99.1%</td><td>99.1%</td><td>98.9%</td>
     <td></td>
   </tr>
   <tr>
     <td>scipy_best</td>
-    <td></td><td></td><td></td><td></td>
+    <td>97.5%</td><td>97.4%</td><td>97.4%</td><td>97.3%</td>
     <td></td>
   </tr>
   <tr>
     <td>scipy_zolotarev</td>
-    <td></td><td></td><td></td><td></td>
+    <td>97.5%</td><td>97.5%</td><td>97.4%</td><td>97.3%</td>
     <td></td>
   </tr>
   <tr>
@@ -311,7 +341,7 @@ to complete. The figure above will be updated then.
   </tr>
   <tr>
     <td>pylevy_miotto</td>
-    <td></td><td></td><td></td><td></td>
+    <td>83.1%</td><td>80.1%</td><td>75.1%</td><td>54.1%</td>
     <td></td>
   </tr>
   <tr>
@@ -326,17 +356,17 @@ to complete. The figure above will be updated then.
   <tr><td>Method</td><td>1E-1</td><td>1E-2</td><td>1E-3</td><td>1E-4</td><td></td></tr>
   <tr>
     <td>simple_quadrature</td>
-    <td></td><td></td><td></td><td></td>
+    <td>98.7%</td><td>98.7%</td><td>98.7%</td><td>98.7%</td>
     <td></td>
   </tr>
   <tr>
     <td>scipy_best</td>
-    <td></td><td></td><td></td><td></td>
+    <td>97.5%</td><td>97.4%</td><td>97.4%</td><td>97.4%</td>
     <td></td>
   </tr>
   <tr>
     <td>scipy_zolotarev</td>
-    <td></td><td></td><td></td><td></td>
+    <td>97.4%</td><td>97.4%</td><td>97.4%</td><td>97.4%</td>
     <td></td>
   </tr>
   <tr>
@@ -346,7 +376,7 @@ to complete. The figure above will be updated then.
   </tr>
   <tr>
     <td>pylevy_miotto</td>
-    <td></td><td></td><td></td><td></td>
+    <td>83.8%</td><td>77.5%</td><td>76.2%</td><td>74.1%</td>
     <td></td>
   </tr>
   <tr>
@@ -363,17 +393,17 @@ to complete. The figure above will be updated then.
   <tr><td>Method</td><td>1E-4</td><td>1E-5</td><td>1E-6</td><td>1E-7</td><td></td></tr>
   <tr>
     <td>simple_quadrature</td>
-    <td></td><td></td><td></td><td></td>
+    <td>95.8%</td><td>95.8%</td><td>95.8%</td><td>95.7%</td>
     <td></td>
   </tr>
   <tr>
     <td>scipy_best</td>
-    <td></td><td></td><td></td><td></td>
+    <td>95.8%</td><td>95.7%</td><td>94.9%</td><td>92.8%</td>
     <td></td>
   </tr>
   <tr>
     <td>scipy_zolotarev</td>
-    <td></td><td></td><td></td><td></td>
+    <td>96.8%</td><td>96.6%</td><td>95.5%</td><td>93.2%</td>
     <td></td>
   </tr>
   <tr>
@@ -383,7 +413,7 @@ to complete. The figure above will be updated then.
   </tr>
   <tr>
     <td>pylevy_miotto</td>
-    <td></td><td></td><td></td><td></td>
+    <td>89.1%</td><td>84.1%</td><td>74.9%</td><td>52.1%</td>
     <td></td>
   </tr>
   <tr>
@@ -398,17 +428,17 @@ to complete. The figure above will be updated then.
   <tr><td>Method</td><td>1E-1</td><td>1E-2</td><td>1E-3</td><td>1E-4</td><td></td></tr>
   <tr>
     <td>simple_quadrature</td>
-    <td></td><td></td><td></td><td></td>
+    <td>94.7%</td><td>94.7%</td><td>94.7%</td><td>94.7%</td>
     <td></td>
   </tr>
   <tr>
     <td>scipy_best</td>
-    <td></td><td></td><td></td><td></td>
+    <td>90.8%</td><td>90.8%</td><td>90.8%</td><td>90.8%</td>
     <td></td>
   </tr>
   <tr>
     <td>scipy_zolotarev</td>
-    <td></td><td></td><td></td><td></td>
+    <td>90.8%</td><td>90.8%</td><td>90.8%</td><td>90.8%</td>
     <td></td>
   </tr>
   <tr>
@@ -418,7 +448,7 @@ to complete. The figure above will be updated then.
   </tr>
   <tr>
     <td>pylevy_miotto</td>
-    <td></td><td></td><td></td><td></td>
+    <td>86.7%</td><td>78.2%</td><td>68.9%</td><td>61.4%</td>
     <td></td>
   </tr>
   <tr>
