@@ -12,9 +12,6 @@ such implementations. We also provide some alternative calculation methods.
 
 ![accuracy figures](figures/accuracy_figures.png)
 
-Note: the new PDF computations for scipy_quadrature will take several days
-to complete. The figure above will be updated then.
-
 # Table of Contents
   * [CDF accuracy percentages](#CDFAccuracy)
   * [PDF accuracy percentages](#PDFAccuracy)
@@ -264,7 +261,7 @@ to complete. The figure above will be updated then.
   </tr>
   <tr>
     <td>scipy_quadrature</td>
-    <td></td><td></td><td></td><td></td>
+    <td>80.2%</td><td>78.6%</td><td>77.1%</td><td>75.4%</td>
     <td></td>
   </tr>
   <tr>
@@ -299,7 +296,7 @@ to complete. The figure above will be updated then.
   </tr>
   <tr>
     <td>scipy_quadrature</td>
-    <td></td><td></td><td></td><td></td>
+    <td>79.0%</td><td>77.3%</td><td>75.3%</td><td>73.0%</td>
     <td></td>
   </tr>
   <tr>
@@ -336,7 +333,7 @@ to complete. The figure above will be updated then.
   </tr>
   <tr>
     <td>scipy_quadrature</td>
-    <td></td><td></td><td></td><td></td>
+    <td>85.0%</td><td>84.2%</td><td>83.4%</td><td>82.5%</td>
     <td></td>
   </tr>
   <tr>
@@ -371,7 +368,7 @@ to complete. The figure above will be updated then.
   </tr>
   <tr>
     <td>scipy_quadrature</td>
-    <td></td><td></td><td></td><td></td>
+    <td>86.0%</td><td>85.1%</td><td>84.3%</td><td>83.6%</td>
     <td></td>
   </tr>
   <tr>
@@ -408,7 +405,7 @@ to complete. The figure above will be updated then.
   </tr>
   <tr>
     <td>scipy_quadrature</td>
-    <td></td><td></td><td></td><td></td>
+    <td>75.7%</td><td>74.7%</td><td>73.9%</td><td>73.2%</td>
     <td></td>
   </tr>
   <tr>
@@ -443,7 +440,7 @@ to complete. The figure above will be updated then.
   </tr>
   <tr>
     <td>scipy_quadrature</td>
-    <td></td><td></td><td></td><td></td>
+    <td>75.2%</td><td>74.4%</td><td>73.7%</td><td>72.9%</td>
     <td></td>
   </tr>
   <tr>
