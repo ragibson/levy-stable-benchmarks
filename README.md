@@ -28,27 +28,27 @@ such implementations. We also provide some alternative calculation methods.
   <tr>
     <td>simple_quadrature</td>
     <td>100.0%</td><td>100.0%</td><td>99.6%</td><td>99.4%</td>
-    <td></td>
+    <td>3.7 ms</td>
   </tr>
   <tr>
     <td>simple_monte_carlo</td>
     <td>100.0%</td><td>99.9%</td><td>73.6%</td><td>32.2%</td>
-    <td></td>
+    <td>0.17 ms</td>
   </tr>
   <tr>
     <td>larger_monte_carlo</td>
     <td>100.0%</td><td>100.0%</td><td>99.6%</td><td>74.1%</td>
-    <td></td>
+    <td>19 ms</td>
   </tr>
   <tr>
     <td>scipy_best</td>
     <td>97.8%</td><td>97.4%</td><td>95.4%</td><td>88.4%</td>
-    <td></td>
+    <td>2.5 ms</td>
   </tr>
   <tr>
     <td>pylevy_miotto</td>
     <td>83.4%</td><td>77.8%</td><td>68.1%</td><td>56.8%</td>
-    <td></td>
+    <td>1.3 ms</td>
   </tr>
   <tr>
     <td>pystable_jones</td>
@@ -63,27 +63,27 @@ such implementations. We also provide some alternative calculation methods.
   <tr>
     <td>simple_quadrature</td>
     <td>99.9%</td><td>99.9%</td><td>99.9%</td><td>99.6%</td>
-    <td></td>
+    <td>3.7 ms</td>
   </tr>
   <tr>
     <td>simple_monte_carlo</td>
     <td>96.5%</td><td>77.5%</td><td>56.6%</td><td>38.4%</td>
-    <td></td>
+    <td>0.17 ms</td>
   </tr>
   <tr>
     <td>larger_monte_carlo</td>
     <td>99.3%</td><td>97.3%</td><td>80.1%</td><td>56.8%</td>
-    <td></td>
+    <td>19 ms</td>
   </tr>
   <tr>
     <td>scipy_best</td>
     <td>89.3%</td><td>88.9%</td><td>88.6%</td><td>88.6%</td>
-    <td></td>
+    <td>2.5 ms</td>
   </tr>
   <tr>
     <td>pylevy_miotto</td>
     <td>85.1%</td><td>69.4%</td><td>56.4%</td><td>44.5%</td>
-    <td></td>
+    <td>1.3 ms</td>
   </tr>
   <tr>
     <td>pystable_jones</td>
@@ -100,27 +100,27 @@ such implementations. We also provide some alternative calculation methods.
   <tr>
     <td>simple_quadrature</td>
     <td>99.2%</td><td>99.2%</td><td>99.2%</td><td>99.2%</td>
-    <td></td>
+    <td>3.4 ms</td>
   </tr>
   <tr>
     <td>simple_monte_carlo</td>
     <td>100.0%</td><td>99.5%</td><td>35.9%</td><td>3.8%</td>
-    <td></td>
+    <td>0.17 ms</td>
   </tr>
   <tr>
     <td>larger_monte_carlo</td>
     <td>100.0%</td><td>100.0%</td><td>99.9%</td><td>30.2%</td>
-    <td></td>
+    <td>19 ms</td>
   </tr>
   <tr>
     <td>scipy_best</td>
     <td>97.5%</td><td>97.5%</td><td>97.5%</td><td>97.5%</td>
-    <td></td>
+    <td>2.3 ms</td>
   </tr>
   <tr>
     <td>pylevy_miotto</td>
     <td>83.3%</td><td>78.0%</td><td>76.2%</td><td>75.0%</td>
-    <td></td>
+    <td>1.3 ms</td>
   </tr>
   <tr>
     <td>pystable_jones</td>
@@ -135,27 +135,27 @@ such implementations. We also provide some alternative calculation methods.
   <tr>
     <td>simple_quadrature</td>
     <td>99.3%</td><td>99.2%</td><td>99.2%</td><td>99.2%</td>
-    <td></td>
+    <td>3.4 ms</td>
   </tr>
   <tr>
     <td>simple_monte_carlo</td>
     <td>100.0%</td><td>99.3%</td><td>74.9%</td><td>19.4%</td>
-    <td></td>
+    <td>0.17 ms</td>
   </tr>
   <tr>
     <td>larger_monte_carlo</td>
     <td>100.0%</td><td>99.9%</td><td>99.5%</td><td>79.0%</td>
-    <td></td>
+    <td>19 ms</td>
   </tr>
   <tr>
     <td>scipy_best</td>
     <td>97.6%</td><td>97.5%</td><td>97.5%</td><td>97.5%</td>
-    <td></td>
+    <td>2.3 ms</td>
   </tr>
   <tr>
     <td>pylevy_miotto</td>
     <td>90.8%</td><td>80.8%</td><td>77.5%</td><td>75.7%</td>
-    <td></td>
+    <td>1.3 ms</td>
   </tr>
   <tr>
     <td>pystable_jones</td>
@@ -172,27 +172,27 @@ such implementations. We also provide some alternative calculation methods.
   <tr>
     <td>simple_quadrature</td>
     <td>96.4%</td><td>96.0%</td><td>95.8%</td><td>95.6%</td>
-    <td></td>
+    <td>5.3 ms</td>
   </tr>
   <tr>
     <td>simple_monte_carlo</td>
     <td>99.4%</td><td>98.9%</td><td>55.6%</td><td>20.2%</td>
-    <td></td>
+    <td>0.98 ms</td>
   </tr>
   <tr>
     <td>larger_monte_carlo</td>
     <td>99.4%</td><td>99.1%</td><td>98.9%</td><td>51.2%</td>
-    <td></td>
+    <td>110 ms</td>
   </tr>
   <tr>
     <td>scipy_best</td>
     <td>95.6%</td><td>95.2%</td><td>94.7%</td><td>89.6%</td>
-    <td></td>
+    <td>2.5 ms</td>
   </tr>
   <tr>
     <td>pylevy_miotto</td>
     <td>83.0%</td><td>79.2%</td><td>74.9%</td><td>69.7%</td>
-    <td></td>
+    <td>1.3 ms</td>
   </tr>
   <tr>
     <td>pystable_jones</td>
@@ -207,27 +207,27 @@ such implementations. We also provide some alternative calculation methods.
   <tr>
     <td>simple_quadrature</td>
     <td>96.5%</td><td>95.9%</td><td>95.8%</td><td>95.6%</td>
-    <td></td>
+    <td>5.3 ms</td>
   </tr>
   <tr>
     <td>simple_monte_carlo</td>
     <td>97.1%</td><td>87.5%</td><td>67.2%</td><td>29.4%</td>
-    <td></td>
+    <td>0.98 ms</td>
   </tr>
   <tr>
     <td>larger_monte_carlo</td>
     <td>99.4%</td><td>98.0%</td><td>88.3%</td><td>67.8%</td>
-    <td></td>
+    <td>110 ms</td>
   </tr>
   <tr>
     <td>scipy_best</td>
     <td>93.4%</td><td>92.7%</td><td>92.5%</td><td>92.3%</td>
-    <td></td>
+    <td>2.5 ms</td>
   </tr>
   <tr>
     <td>pylevy_miotto</td>
     <td>85.8%</td><td>78.3%</td><td>73.5%</td><td>67.5%</td>
-    <td></td>
+    <td>1.3 ms</td>
   </tr>
   <tr>
     <td>pystable_jones</td>
@@ -247,27 +247,27 @@ such implementations. We also provide some alternative calculation methods.
   <tr>
     <td>simple_quadrature</td>
     <td>99.9%</td><td>99.9%</td><td>99.9%</td><td>99.9%</td>
-    <td></td>
+    <td>3.0 ms</td>
   </tr>
   <tr>
     <td>scipy_best</td>
     <td>97.4%</td><td>96.4%</td><td>92.5%</td><td>87.1%</td>
-    <td></td>
+    <td>16 ms</td>
   </tr>
   <tr>
     <td>scipy_zolotarev</td>
     <td>98.5%</td><td>96.6%</td><td>92.5%</td><td>87.2%</td>
-    <td></td>
+    <td>5.6 ms</td>
   </tr>
   <tr>
     <td>scipy_quadrature</td>
     <td>80.2%</td><td>78.6%</td><td>77.1%</td><td>75.4%</td>
-    <td></td>
+    <td>170 ms</td>
   </tr>
   <tr>
     <td>pylevy_miotto</td>
     <td>90.5%</td><td>79.2%</td><td>66.4%</td><td>36.4%</td>
-    <td></td>
+    <td>1.2 ms</td>
   </tr>
   <tr>
     <td>pystable_jones</td>
@@ -282,27 +282,27 @@ such implementations. We also provide some alternative calculation methods.
   <tr>
     <td>simple_quadrature</td>
     <td>100.0%</td><td>100.0%</td><td>100.0%</td><td>99.9%</td>
-    <td></td>
+    <td>3.0 ms</td>
   </tr>
   <tr>
     <td>scipy_best</td>
     <td>86.2%</td><td>86.2%</td><td>86.2%</td><td>86.2%</td>
-    <td></td>
+    <td>16 ms</td>
   </tr>
   <tr>
     <td>scipy_zolotarev</td>
     <td>86.2%</td><td>86.2%</td><td>86.2%</td><td>86.2%</td>
-    <td></td>
+    <td>5.6 ms</td>
   </tr>
   <tr>
     <td>scipy_quadrature</td>
     <td>79.0%</td><td>77.3%</td><td>75.3%</td><td>73.0%</td>
-    <td></td>
+    <td>170 ms</td>
   </tr>
   <tr>
     <td>pylevy_miotto</td>
     <td>83.7%</td><td>51.9%</td><td>27.5%</td><td>15.0%</td>
-    <td></td>
+    <td>1.2 ms</td>
   </tr>
   <tr>
     <td>pystable_jones</td>
@@ -319,27 +319,27 @@ such implementations. We also provide some alternative calculation methods.
   <tr>
     <td>simple_quadrature</td>
     <td>99.1%</td><td>99.1%</td><td>99.1%</td><td>98.9%</td>
-    <td></td>
+    <td>3.6 ms</td>
   </tr>
   <tr>
     <td>scipy_best</td>
     <td>97.5%</td><td>97.4%</td><td>97.4%</td><td>97.3%</td>
-    <td></td>
+    <td>16 ms</td>
   </tr>
   <tr>
     <td>scipy_zolotarev</td>
     <td>97.5%</td><td>97.5%</td><td>97.4%</td><td>97.3%</td>
-    <td></td>
+    <td>5.3 ms</td>
   </tr>
   <tr>
     <td>scipy_quadrature</td>
     <td>85.0%</td><td>84.2%</td><td>83.4%</td><td>82.5%</td>
-    <td></td>
+    <td>98 ms</td>
   </tr>
   <tr>
     <td>pylevy_miotto</td>
     <td>83.1%</td><td>80.1%</td><td>75.1%</td><td>54.1%</td>
-    <td></td>
+    <td>1.3 ms</td>
   </tr>
   <tr>
     <td>pystable_jones</td>
@@ -354,27 +354,27 @@ such implementations. We also provide some alternative calculation methods.
   <tr>
     <td>simple_quadrature</td>
     <td>98.7%</td><td>98.7%</td><td>98.7%</td><td>98.7%</td>
-    <td></td>
+    <td>3.6 ms</td>
   </tr>
   <tr>
     <td>scipy_best</td>
     <td>97.5%</td><td>97.4%</td><td>97.4%</td><td>97.4%</td>
-    <td></td>
+    <td>16 ms</td>
   </tr>
   <tr>
     <td>scipy_zolotarev</td>
     <td>97.4%</td><td>97.4%</td><td>97.4%</td><td>97.4%</td>
-    <td></td>
+    <td>5.3 ms</td>
   </tr>
   <tr>
     <td>scipy_quadrature</td>
     <td>86.0%</td><td>85.1%</td><td>84.3%</td><td>83.6%</td>
-    <td></td>
+    <td>98 ms</td>
   </tr>
   <tr>
     <td>pylevy_miotto</td>
     <td>83.8%</td><td>77.5%</td><td>76.2%</td><td>74.1%</td>
-    <td></td>
+    <td>1.3 ms</td>
   </tr>
   <tr>
     <td>pystable_jones</td>
@@ -391,27 +391,27 @@ such implementations. We also provide some alternative calculation methods.
   <tr>
     <td>simple_quadrature</td>
     <td>95.8%</td><td>95.8%</td><td>95.8%</td><td>95.7%</td>
-    <td></td>
+    <td>11 ms</td>
   </tr>
   <tr>
     <td>scipy_best</td>
     <td>95.8%</td><td>95.7%</td><td>94.9%</td><td>92.8%</td>
-    <td></td>
+    <td>24 ms</td>
   </tr>
   <tr>
     <td>scipy_zolotarev</td>
     <td>96.8%</td><td>96.6%</td><td>95.5%</td><td>93.2%</td>
-    <td></td>
+    <td>5.6 ms</td>
   </tr>
   <tr>
     <td>scipy_quadrature</td>
     <td>75.7%</td><td>74.7%</td><td>73.9%</td><td>73.2%</td>
-    <td></td>
+    <td>140 ms</td>
   </tr>
   <tr>
     <td>pylevy_miotto</td>
     <td>89.1%</td><td>84.1%</td><td>74.9%</td><td>52.1%</td>
-    <td></td>
+    <td>1.2 ms</td>
   </tr>
   <tr>
     <td>pystable_jones</td>
@@ -426,27 +426,27 @@ such implementations. We also provide some alternative calculation methods.
   <tr>
     <td>simple_quadrature</td>
     <td>94.7%</td><td>94.7%</td><td>94.7%</td><td>94.7%</td>
-    <td></td>
+    <td>11 ms</td>
   </tr>
   <tr>
     <td>scipy_best</td>
     <td>90.8%</td><td>90.8%</td><td>90.8%</td><td>90.8%</td>
-    <td></td>
+    <td>24 ms</td>
   </tr>
   <tr>
     <td>scipy_zolotarev</td>
     <td>90.8%</td><td>90.8%</td><td>90.8%</td><td>90.8%</td>
-    <td></td>
+    <td>5.6 ms</td>
   </tr>
   <tr>
     <td>scipy_quadrature</td>
     <td>75.2%</td><td>74.4%</td><td>73.7%</td><td>72.9%</td>
-    <td></td>
+    <td>140 ms</td>
   </tr>
   <tr>
     <td>pylevy_miotto</td>
     <td>86.7%</td><td>78.2%</td><td>68.9%</td><td>61.4%</td>
-    <td></td>
+    <td>1.2 ms</td>
   </tr>
   <tr>
     <td>pystable_jones</td>
