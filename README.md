@@ -47,7 +47,7 @@ such implementations. We also provide some alternative calculation methods.
   </tr>
   <tr>
     <td>pylevy_miotto</td>
-    <td>83.4%</td><td>77.8%</td><td>68.1%</td><td>56.8%</td>
+    <td>83.5%</td><td>78.0%</td><td>68.9%</td><td>58.1%</td>
     <td>1.3 ms</td>
   </tr>
   <tr>
@@ -82,7 +82,7 @@ such implementations. We also provide some alternative calculation methods.
   </tr>
   <tr>
     <td>pylevy_miotto</td>
-    <td>85.1%</td><td>69.4%</td><td>56.4%</td><td>44.5%</td>
+    <td>85.2%</td><td>70.0%</td><td>57.3%</td><td>45.6%</td>
     <td>1.3 ms</td>
   </tr>
   <tr>
@@ -119,7 +119,7 @@ such implementations. We also provide some alternative calculation methods.
   </tr>
   <tr>
     <td>pylevy_miotto</td>
-    <td>83.3%</td><td>78.0%</td><td>76.2%</td><td>75.0%</td>
+    <td>85.9%</td><td>80.7%</td><td>78.8%</td><td>77.5%</td>
     <td>1.3 ms</td>
   </tr>
   <tr>
@@ -154,7 +154,7 @@ such implementations. We also provide some alternative calculation methods.
   </tr>
   <tr>
     <td>pylevy_miotto</td>
-    <td>90.8%</td><td>80.8%</td><td>77.5%</td><td>75.7%</td>
+    <td>92.7%</td><td>83.0%</td><td>79.8%</td><td>78.1%</td>
     <td>1.3 ms</td>
   </tr>
   <tr>
@@ -191,7 +191,7 @@ such implementations. We also provide some alternative calculation methods.
   </tr>
   <tr>
     <td>pylevy_miotto</td>
-    <td>83.0%</td><td>79.2%</td><td>74.9%</td><td>69.7%</td>
+    <td>91.5%</td><td>87.9%</td><td>83.4%</td><td>77.7%</td>
     <td>1.3 ms</td>
   </tr>
   <tr>
@@ -226,7 +226,7 @@ such implementations. We also provide some alternative calculation methods.
   </tr>
   <tr>
     <td>pylevy_miotto</td>
-    <td>85.8%</td><td>78.3%</td><td>73.5%</td><td>67.5%</td>
+    <td>93.7%</td><td>86.0%</td><td>79.5%</td><td>71.5%</td>
     <td>1.3 ms</td>
   </tr>
   <tr>
@@ -266,8 +266,8 @@ such implementations. We also provide some alternative calculation methods.
   </tr>
   <tr>
     <td>pylevy_miotto</td>
-    <td>90.5%</td><td>79.2%</td><td>66.4%</td><td>36.4%</td>
-    <td>1.2 ms</td>
+    <td>90.8%</td><td>79.8%</td><td>67.7%</td><td>37.5%</td>
+    <td>1.3 ms</td>
   </tr>
   <tr>
     <td>pystable_jones</td>
@@ -301,8 +301,8 @@ such implementations. We also provide some alternative calculation methods.
   </tr>
   <tr>
     <td>pylevy_miotto</td>
-    <td>83.7%</td><td>51.9%</td><td>27.5%</td><td>15.0%</td>
-    <td>1.2 ms</td>
+    <td>83.8%</td><td>53.1%</td><td>28.8%</td><td>15.9%</td>
+    <td>1.3 ms</td>
   </tr>
   <tr>
     <td>pystable_jones</td>
@@ -338,7 +338,7 @@ such implementations. We also provide some alternative calculation methods.
   </tr>
   <tr>
     <td>pylevy_miotto</td>
-    <td>83.1%</td><td>80.1%</td><td>75.1%</td><td>54.1%</td>
+    <td>85.4%</td><td>82.5%</td><td>77.5%</td><td>55.9%</td>
     <td>1.3 ms</td>
   </tr>
   <tr>
@@ -373,7 +373,7 @@ such implementations. We also provide some alternative calculation methods.
   </tr>
   <tr>
     <td>pylevy_miotto</td>
-    <td>83.8%</td><td>77.5%</td><td>76.2%</td><td>74.1%</td>
+    <td>85.4%</td><td>79.8%</td><td>78.6%</td><td>76.5%</td>
     <td>1.3 ms</td>
   </tr>
   <tr>
@@ -410,8 +410,8 @@ such implementations. We also provide some alternative calculation methods.
   </tr>
   <tr>
     <td>pylevy_miotto</td>
-    <td>89.1%</td><td>84.1%</td><td>74.9%</td><td>52.1%</td>
-    <td>1.2 ms</td>
+    <td>91.9%</td><td>87.0%</td><td>77.9%</td><td>54.4%</td>
+    <td>1.3 ms</td>
   </tr>
   <tr>
     <td>pystable_jones</td>
@@ -445,8 +445,8 @@ such implementations. We also provide some alternative calculation methods.
   </tr>
   <tr>
     <td>pylevy_miotto</td>
-    <td>86.7%</td><td>78.2%</td><td>68.9%</td><td>61.4%</td>
-    <td>1.2 ms</td>
+    <td>88.6%</td><td>81.3%</td><td>72.0%</td><td>64.3%</td>
+    <td>1.3 ms</td>
   </tr>
   <tr>
     <td>pystable_jones</td>
@@ -497,7 +497,8 @@ There are six methods tested here. See the links below and the code in [algorith
    * [**scipy_best**](https://docs.scipy.org/doc/scipy/reference/generated/scipy.stats.levy_stable.html) with `pdf_default_method = "best"`
    * [**scipy_zolotarev**](https://docs.scipy.org/doc/scipy/reference/generated/scipy.stats.levy_stable.html) with `pdf_default_method = "zolotarev"`
    * [**scipy_quadrature**](https://docs.scipy.org/doc/scipy/reference/generated/scipy.stats.levy_stable.html) with `pdf_default_method = "quadrature"`
- * [**pylevy_miotto**](https://github.com/josemiotto/pylevy) (tested on commit [64c525f](https://github.com/josemiotto/pylevy/tree/64c525f273d00d89cbbe531a6557b17b74d18f88))
+ * [**pylevy_miotto**](https://github.com/josemiotto/pylevy) (tested on commit [19fa983
+](https://github.com/josemiotto/pylevy/commit/19fa983437883f6abdb0ea59d1ea057cbc458c9c))
  * TODO: pystable_jones?
 
 ##### The literature is very inconsistent/fragmented with respect to parameterizing stable distributions. Are you sure the libraries are actually consistent in their calculations here?
@@ -510,9 +511,9 @@ TODO: Mark Veillette says this well:
 
 TODO: see our [tests to prove our transformations are good](tests/parameterization_tests.py)
 
-##### pylevy_miotto appears somewhat accurate in practice. Why does it perform so poorly in this benchmark?
+##### pylevy_miotto appears somewhat accurate in practice. Why does it perform poorly in this benchmark?
 
-TODO: pylevy_miotto parameter limitations and implementation bugs
+TODO: pylevy_miotto parameter limitations
 
 ##### simple_quadrature seems very accurate. Is this always the case?
 
