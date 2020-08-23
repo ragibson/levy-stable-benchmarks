@@ -1,0 +1,54 @@
+\documentclass{article}
+
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{amsthm}
+\usepackage{changepage}
+\usepackage[margin=0.75in]{geometry}
+
+\setlength\parindent{0pt}
+
+\begin{document}
+Arguably the most common stable distribution parameterization has characteristic function given by
+\begin{equation*}
+	\varphi(t; \alpha, \beta, c, \mu) = \exp(it\mu - \lvert ct \rvert^\alpha (1 - i\beta\operatorname{sgn}(t)\Phi)), \qquad \Phi = \begin{cases}
+		\tan(\frac{\pi\alpha}{2}), &\text{if } \alpha \neq 1\\
+		-\frac{2}{\pi}\log\lvert t \rvert, &\text{if } \alpha = 1
+	\end{cases}
+\end{equation*}
+For simplicity, we force the scale $c=1$ and the location $\mu = 0$, yielding
+\begin{equation*}
+	\varphi(t; \alpha, \beta) = \exp(-\lvert t \rvert^\alpha (1 - i\beta\operatorname{sgn}(t)\Phi))
+\end{equation*}
+with $\Phi$ defined as before.
+
+\subsection*{PDF Integrand Derivation}
+	
+Probability density functions are the Fourier transforms of their respective characteristic functions, so
+\begin{align*}
+	f(x) &= \frac{1}{2\pi} \int_{-\infty}^\infty \varphi(t) e^{-ixt} \,dt\\
+	&= \frac{1}{2\pi} \int_{-\infty}^\infty \exp(-\lvert t \rvert^\alpha (1 - i\beta\operatorname{sgn}(t)\Phi)) \exp(-ixt) \,dt\\
+	\intertext{By Euler's formula and ignoring strictly complex terms (since the PDF is real-valued),}
+	&= \frac{1}{2\pi} \int_{-\infty}^\infty \exp(-\lvert t \rvert^\alpha) [\cos(\lvert t \rvert^\alpha \beta \operatorname{sgn}(t)\Phi)\cos(xt)+\sin(\lvert t \rvert^\alpha \beta \operatorname{sgn}(t)\Phi)\sin(xt)] \,dt
+	\intertext{Lastly, by symmetry,}
+	f(x) &= \frac{1}{\pi} \int_0^\infty \exp(-t^\alpha) [\cos(t^\alpha\beta\Phi)\cos(xt)+\sin(t^\alpha\beta\Phi)\sin(xt)] \,dt
+\end{align*}
+Note that the oscillatory terms $\cos(xt)$ and $\sin(xt)$ should be incorporated into a weighting function in QUADPACK routines.\\
+
+Transforming into the $S_0$ parameterization of Nolan amounts to computing $f(x+\beta\tan(\pi\alpha/2))$ instead of $f(x)$ when $\alpha \neq 1$.
+
+\subsection*{CDF Integrand Derivation}
+
+Due to an inversion formula by Gil-Pelaez, we have
+\begin{align*}
+	F(x) &= \frac{1}{2} - \frac{1}{\pi} \int_0^\infty \frac{\operatorname{Im}[\varphi(t)e^{-ixt}]}{t} \,dt
+	\intertext{Rewriting to make use of $t \geq 0$ yields}
+	&= \frac{1}{2} - \frac{1}{\pi} \int_0^\infty \frac{\operatorname{Im}[ \exp(-t^\alpha (1 - i\beta\Phi)) \exp(-ixt)]}{t} \,dt
+	\intertext{and applying Euler's formula gives us}
+	F(x) &= \frac{1}{2} - \frac{1}{\pi} \int_0^\infty \frac{\exp(-t^\alpha)[-\cos(t^\alpha \beta\Phi) \sin(xt)+\sin(t^\alpha \beta\Phi)\cos(xt)]}{t} \,dt
+\end{align*}
+
+Note that the oscillatory terms $\cos(xt)$ and $\sin(xt)$ should be incorporated into a weighting function in QUADPACK routines.\\
+
+Transforming into the $S_0$ parameterization of Nolan amounts to computing $F(x+\beta\tan(\pi\alpha/2))$ instead of $F(x)$ when $\alpha \neq 1$.
+\end{document}

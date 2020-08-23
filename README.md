@@ -490,7 +490,7 @@ TODO: behavior **very** far out (p < 0.00001) into the tails is not tested, but 
 There are six methods tested here. See the links below and the code in [algorithms](algorithms).
 
  * Our simple methods
-   * [**simple_quadrature**](algorithms/simple_quadrature.py): direct numerical integration (TODO: derivations?)
+   * [**simple_quadrature**](algorithms/simple_quadrature.py): direct numerical integration (TODO: reference the [integrand derivation](figures/simple_quadrature_derivation/simple_quadrature_derivation.pdf))
    * [**simple_monte_carlo**](algorithms/simple_monte_carlo.py): monte carlo scheme based on the [Chambers-Mallows-Stuck method of simulating stable random variables](https://doi.org/10.1080%2F01621459.1976.10480344)
    * **larger_monte_carlo**: same as simple_monte_carlo, but with a sample size of 100 million
  * Scipy's methods (tested on version 1.5.2)
