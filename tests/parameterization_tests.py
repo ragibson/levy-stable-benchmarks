@@ -115,36 +115,28 @@ def make_test(pdf=None, cdf=None, decimal_places_tolerance=10, is_known_bug_cdf=
 
 class TestPylevyMiotto(make_test(pdf=pylevy_miotto.pdf, cdf=pylevy_miotto.cdf,
                                  decimal_places_tolerance=2,
-                                 is_known_bug_pdf=lambda alpha, beta: alpha == 1.0 or alpha < 0.5,
-                                 is_known_bug_cdf=lambda alpha, beta: alpha == 1.0 or alpha < 0.5)):
-    # pylevy_miottos parameterization at alpha = 1 is inconsistent with their alpha != 1
-    # we choose to leave this library buggy rather than fixing this piecewise
+                                 is_known_bug_pdf=lambda alpha, beta: alpha < 0.5,
+                                 is_known_bug_cdf=lambda alpha, beta: alpha < 0.5)):
     # alpha < 0.5 is not implemented in this library (they round to alpha = 0.5 in this case)
     # it is also fairly inaccurate in general, note the tolerance of 2 decimal places here
     pass
 
 
 class TestScipyBest(make_test(pdf=scipy_best.pdf, cdf=scipy_best.cdf,
-                              decimal_places_tolerance=3,
-                              is_known_bug_pdf=lambda alpha, beta: alpha == 1.0 and beta != 0.0,
-                              is_known_bug_cdf=lambda alpha, beta: alpha == 1.0 and beta != 0.0)):
-    # scipy_best resorts to scipy_quadrature and scipy_zolotarev, both of which are buggy for alpha = 1, beta != 0
-    # scipy_best's CDF calculation is also incredibly inaccurate for alpha = 1, beta != 0
+                              decimal_places_tolerance=3)):
     pass
 
 
 class TestScipyQuadrature(make_test(pdf=scipy_quadrature.pdf, cdf=None,
                                     decimal_places_tolerance=6,
-                                    is_known_bug_pdf=lambda alpha, beta: (alpha == 1.0 and beta != 0.0) or
-                                                                         alpha <= 0.25)):
-    # scipy_quadrature returns incredibly inaccurate returns for alpha = 1, beta != 0
-    # it is also pretty inaccurate for small alpha, so we omit these rather than lowering the tolerance
+                                    is_known_bug_pdf=lambda alpha, beta: alpha <= 0.25)):
+    # scipy_quadrature is pretty inaccurate for small alpha, so we omit these rather than lowering the tolerance
     pass
 
 
 class TestScipyZolotarev(make_test(pdf=scipy_zolotarev.pdf, cdf=None,
                                    decimal_places_tolerance=3,
-                                   is_known_bug_pdf=lambda alpha, beta: alpha == 1.0 and beta != 0.0)):
+                                   is_known_bug_pdf=lambda alpha, beta: alpha == 1 and beta != 0)):
     # scipy_zolotarev emits a warning that this method is unstable for alpha = 1 and beta != 0.
     pass
 
