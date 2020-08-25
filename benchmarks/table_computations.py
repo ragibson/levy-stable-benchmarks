@@ -4,7 +4,8 @@ from multiprocessing import Pool
 from time import time
 from tqdm import tqdm
 
-_ASSUMED_TABLE_ACCURACY = 1e-10
+# absolute accuracy in table for relative tolerance calculations
+_ASSUMED_TABLE_ACCURACY = 0
 
 
 def test_accuracy_against_table(f, table, tol, tol_is_absolute=False, show_progress=False):
