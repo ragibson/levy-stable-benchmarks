@@ -10,22 +10,13 @@ def _indefinite_trig_weighted_quad(f, epsabs, limit, weight, wvar):
     res, error = quad(f_int, 0, inf, epsabs=epsabs, limit=limit, weight=weight, wvar=wvar)
 
     # need to check incorrect weighted integration results. See https://github.com/scipy/scipy/issues/12684
-    # TODO: this check does not always catch the issue. Can this be more robust?
-    #   the largest double is ~1e308 and I've observed res > 1e307 here. Everything above ~1.8e308 is
-    #   _supposed_ to represent NaN/inf, so maybe their code misinterprets this as a "real" value?
-    if res == 0.0 or error == 0.0 or res > 1e307 or abs(res) < error:
-        weight_f = cos if weight == "cos" else sin
-        res, error = quad(lambda t: f(t) * weight_f(wvar * t), 0, inf, epsabs=epsabs, limit=limit)
+    # previously attempted (res == 0.0 or error == 0.0 or res > 1e307 or abs(res) < error)
 
     return res, error
 
 
 def pdf(x, alpha, beta, tol=1e-12, limit=10 ** 3):
-    if beta == 0.0:
-        res, error = _indefinite_trig_weighted_quad(lambda t: exp(-t ** alpha),
-                                                    epsabs=tol, limit=limit, weight="cos", wvar=x)
-        res = res / pi
-    elif alpha == 1.0:
+    if alpha == 1.0:
         phi_constant = -2 * beta / pi
         res1, error1 = _indefinite_trig_weighted_quad(lambda t: exp(-t) * cos(t * phi_constant * log(t)),
                                                       epsabs=tol, limit=limit, weight="cos", wvar=x)
@@ -53,11 +44,7 @@ def pdf(x, alpha, beta, tol=1e-12, limit=10 ** 3):
 
 
 def cdf(x, alpha, beta, tol=1e-12, limit=10 ** 3):
-    if beta == 0.0:
-        res, error = _indefinite_trig_weighted_quad(lambda t: exp(-t ** alpha) / t,
-                                                    epsabs=tol, limit=limit, weight="sin", wvar=x)
-        res = (pi / 2 + res) / pi
-    elif alpha == 1.0:
+    if alpha == 1.0:
         phi_constant = -2 * beta / pi
         res1, error1 = _indefinite_trig_weighted_quad(lambda t: exp(-t) * cos(t * phi_constant * log(t)) / t,
                                                       epsabs=tol, limit=limit, weight="sin", wvar=x)
