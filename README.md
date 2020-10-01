@@ -425,6 +425,10 @@ TODO: behavior **very** far out (p < 0.00001) into the tails is not tested, but 
 
 ##### Why is the range of tested absolute tolerances different for CDF vs. PDF?
 
+This is an ad-hoc choice. It was assumed that absolute accuracies of 0.01 for the CDF and 0.0001 for the PDF are near the lower end of usefulness.
+
+It's worth noting that simply returning the normal distribution (with e.g. `norm.pdf(1, scale=sqrt(2))`) yields composite accuracies of ~20% and ~30% at this accuracy level for the PDF and CDF, respectively.
+
 ##### Where can I find the libraries tested?
 
 There are six methods tested here. See the links below and the code in [algorithms](algorithms).
@@ -437,23 +441,18 @@ There are six methods tested here. See the links below and the code in [algorith
    * [**scipy_best**](https://docs.scipy.org/doc/scipy/reference/generated/scipy.stats.levy_stable.html) with `pdf_default_method = "best"`
    * [**scipy_zolotarev**](https://docs.scipy.org/doc/scipy/reference/generated/scipy.stats.levy_stable.html) with `pdf_default_method = "zolotarev"`
    * [**scipy_quadrature**](https://docs.scipy.org/doc/scipy/reference/generated/scipy.stats.levy_stable.html) with `pdf_default_method = "quadrature"`
- * [**pylevy_miotto**](https://github.com/josemiotto/pylevy) (tested on commit [19fa983
-](https://github.com/josemiotto/pylevy/commit/19fa983437883f6abdb0ea59d1ea057cbc458c9c))
+ * [**pylevy_miotto**](https://github.com/josemiotto/pylevy) (tested on commit [19fa983](https://github.com/josemiotto/pylevy/commit/19fa983437883f6abdb0ea59d1ea057cbc458c9c))
  * TODO: pystable_jones?
 
 ##### The literature is very inconsistent/fragmented with respect to parameterizing stable distributions. Are you sure the libraries are actually consistent in their calculations here?
 
-TODO: Mark Veillette says this well:
+Mark Veillette says this well:
 
 > One of the most frustrating issues in dealing with alpha-stable distribtuions is that its parameterization is not consistent across the literature (there are over half a dozen parameterizations). [...] The most common way to specify a parameterization is to look at the characteristic function of the alpha-stable random variable.
 >
 > One further annoyance is that the names of the 4 parameters are also inconsistent. [...] The letters alpha and beta are used almost everywhere you look, while the other two parameters are almost always different.
 
-TODO: see our [tests to prove our transformations are good](tests/parameterization_tests.py)
-
-##### pylevy_miotto appears somewhat accurate. Why does it perform poorly in this benchmark?
-
-TODO: pylevy_miotto parameter limitations
+To this end, we've written some [tests to prove our transformations are good](tests/parameterization_tests.py). At the moment, all the libraries here appear use either the S0 or S1 parameterization (in Nolan's notation).
 
 ##### simple_quadrature _usually_ seems accurate. When/where is it inaccurate?
 
@@ -461,18 +460,26 @@ TODO: simple_quadrature limitations and potential hybrid scheme, should probably
 
 ##### simple_monte_carlo appears far slower in practice than listed here. Why?
 
+simple_monte_carlo is an incredibly inefficient method for computing the CDF in general. It must generate new random samples for each unique pair of (alpha, beta) values.
+
+Here, the test tables include many repeated (alpha, beta) pairs, so the method appears to run more quickly *on average* than it otherwise might.
+
 ##### These methods vary greatly in their speed. What is a "good" average time per call? 
 
-TODO: highly domain specific, include machine specs, etc.
+This is highly domain specific -- some applications might need very quick calculations and can tolerate large inaccuracies. Others might require high accuracy and have speed only as a secondary consideration. 
 
-TODO: Nolan claims to have
+The tests here were run on a machine with a i7-9700K (8 cores, stock, up to 4.9 GHz) CPU and 16 GB DDR4 3200 MHz of RAM.
+
+Nolan claims to have
 
 > code to quickly approximate stable densities.  This routine is much faster than the regular density calculations: approximately 1 million density evaluations/second can be performed on a 1 GHz Pentium.
 
-This appears to suggest that an average time per call of <1 us (!) is "easily" feasible on modern hardware. However, this is several orders of magnitude faster than any of the methods tested here.
+which appears to suggest that an average time per call of <1 us (!) is "easily" feasible on modern hardware. However, this is several orders of magnitude faster than any of the methods tested here.
 
 ##### Some of the methods only appear in the PDF or CDF tests. Why?
 
+Some methods only support one or the other. In general, computing the CDF of this distribution is much easier than computing the PDF.
+
 ##### I know of a Python library that is missing from this benchmark. Can you add it?
 
-TODO: please raise an issue and I'll try to add it.
+Yes (assuming its publicly available), please raise an issue and I'll try to add it.
