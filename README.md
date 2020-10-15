@@ -1,7 +1,5 @@
 # levy-stable-benchmarks
 
-### ***This is a work in progress. Please come back later, except for limited purposes and/or review.***
-
 Stable distributions (sometimes called Lévy alpha-stable distributions) are
 important for modelling data across several disciplines including signal
 processing, physics, and finance. Despite this, many Python libraries
@@ -398,6 +396,8 @@ such implementations. We also provide some alternative calculation methods.
 <a name = "FAQ"></a>
 ## FAQ: notes and limitations
 
+**This FAQ is not yet complete, but many of the questions have reasonably fleshed out answers so far.**
+
 TODO: table of contents for FAQ?
 
 ##### How are "accuracy percentage" and "composite accuracy" defined?
@@ -415,13 +415,13 @@ goes to each.
 
 ##### Where did these PDF/CDF tables come from? Are they accurate?
 
-TODO: Nolan quantile table may have some inaccuracies, but this needs more testing to verify
+TODO: Nolan quantile table definitely has inaccuracies in the tails and issues from their rounding, but this needs more testing to verify
 
 ##### What are some known limitations of this benchmark?
 
 TODO: beta < 0 implementation is assumed correct (by symmetry)
 
-TODO: behavior **very** far out (p < 0.00001) into the tails is not tested, but this is probably a minor concern in practice
+TODO: behavior **very** far out (p < 0.00001) into the tails is not tested, but this is probably a minor concern in most applications
 
 ##### Why is the range of tested absolute tolerances different for CDF vs. PDF?
 
@@ -442,7 +442,7 @@ There are six methods tested here. See the links below and the code in [algorith
    * [**scipy_zolotarev**](https://docs.scipy.org/doc/scipy/reference/generated/scipy.stats.levy_stable.html) with `pdf_default_method = "zolotarev"`
    * [**scipy_quadrature**](https://docs.scipy.org/doc/scipy/reference/generated/scipy.stats.levy_stable.html) with `pdf_default_method = "quadrature"`
  * [**pylevy_miotto**](https://github.com/josemiotto/pylevy) (tested on commit [19fa983](https://github.com/josemiotto/pylevy/commit/19fa983437883f6abdb0ea59d1ea057cbc458c9c))
- * TODO: pystable_jones?
+ * TODO: add the unofficial pystable_jones?
 
 ##### The literature is very inconsistent/fragmented with respect to parameterizing stable distributions. Are you sure the libraries are actually consistent in their calculations here?
 
@@ -456,7 +456,9 @@ To this end, we've written some [tests to prove our transformations are good](te
 
 ##### simple_quadrature _usually_ seems accurate. When/where is it inaccurate?
 
-TODO: simple_quadrature limitations and potential hybrid scheme, should probably add the derivation for the integrands (or find our strategy in the literature somewhere)
+Most notably, simple_quadrature can completely fail near x = ? (TODO) and in the tails when the oscillatory components of the integrand become incredibly unwieldy.
+
+TODO: potential hybrid scheme with asymptotic tail laws? Should probably create a custom integrator for this purpose if accuracy is critical.
 
 ##### simple_monte_carlo appears far slower in practice than listed here. Why?
 
