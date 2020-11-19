@@ -10,10 +10,15 @@ such implementations. We also provide some alternative calculation methods.
 
 ![accuracy figures](figures/accuracy_figures.png)
 
+Among other things, this repository has helped to
+ * Identify a typo in Theorem 1, case (d) of Nolan's original paper, [Numerical calculation of stable densities and distribution functions](https://www.tandfonline.com/doi/abs/10.1080/15326349708807450). Nolan has told me that this has been corrected in his new book.
+ * Further progress on [a scipy PR to improve stable distribution computations](https://github.com/scipy/scipy/pull/9523).
+ * Identify [some issues in pylevy](https://github.com/josemiotto/pylevy/issues/15), a Python package for applications involving stable distributions.
+
 # Table of Contents
-  * [CDF accuracy percentages](#CDFAccuracy)
-  * [PDF accuracy percentages](#PDFAccuracy)
-  * [FAQ, notes, and limitations](#FAQ)
+ * [CDF accuracy percentages](#CDFAccuracy)
+ * [PDF accuracy percentages](#PDFAccuracy)
+ * [FAQ, notes, and limitations](#FAQ)
 
 <a name = "CDFAccuracy"></a>
 ## CDF accuracy percentages
@@ -396,17 +401,17 @@ such implementations. We also provide some alternative calculation methods.
 <a name = "FAQ"></a>
 ## FAQ: notes and limitations
 
-* [How are "accuracy percentage" and "composite accuracy" defined?](#FAQ1)
-* [Where did these PDF/CDF tables come from? Are they accurate?](#FAQ2)
-* [What are some known limitations of this benchmark?](#FAQ3)
-* [Why is the range of tested absolute tolerances different for CDF vs. PDF?](#FAQ4)
-* [Where can I find the libraries tested?](#FAQ5)
-* [The literature is very inconsistent/fragmented with respect to parameterizing stable distributions. Are you sure the libraries are actually consistent in their calculations here?](#FAQ6)
-* [simple_quadrature _usually_ seems accurate. When/where is it inaccurate?](#FAQ7)
-* [simple_monte_carlo appears far slower in practice than listed here. Why?](#FAQ8)
-* [These methods vary greatly in their speed. What is a "good" average time per call?](#FAQ9)
-* [Some of the methods only appear in the PDF or CDF tests. Why?](#FAQ10)
-* [I know of a Python library that is missing from this benchmark. Can you add it?](#FAQ11)
+ * [How are "accuracy percentage" and "composite accuracy" defined?](#FAQ1)
+ * [Where did these PDF/CDF tables come from? Are they accurate?](#FAQ2)
+ * [What are some known limitations of this benchmark?](#FAQ3)
+ * [Why is the range of tested absolute tolerances different for CDF vs. PDF?](#FAQ4)
+ * [Where can I find the libraries tested?](#FAQ5)
+ * [The literature is very inconsistent/fragmented with respect to parameterizing stable distributions. Are you sure the libraries are actually consistent in their calculations here?](#FAQ6)
+ * [simple_quadrature _usually_ seems accurate. When/where is it inaccurate?](#FAQ7)
+ * [simple_monte_carlo appears far slower in practice than listed here. Why?](#FAQ8)
+ * [These methods vary greatly in their speed. What is a "good" average time per call?](#FAQ9)
+ * [Some of the methods only appear in the PDF or CDF tests. Why?](#FAQ10)
+ * [I know of a Python library that is missing from this benchmark. Can you add it?](#FAQ11)
 
 <a name = "FAQ1"></a>
 ##### How are "accuracy percentage" and "composite accuracy" defined?
