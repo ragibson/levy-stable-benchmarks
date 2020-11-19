@@ -396,10 +396,19 @@ such implementations. We also provide some alternative calculation methods.
 <a name = "FAQ"></a>
 ## FAQ: notes and limitations
 
-**This FAQ is not yet complete, but many of the questions have reasonably fleshed out answers so far.**
+* [How are "accuracy percentage" and "composite accuracy" defined?](#FAQ1)
+* [Where did these PDF/CDF tables come from? Are they accurate?](#FAQ2)
+* [What are some known limitations of this benchmark?](#FAQ3)
+* [Why is the range of tested absolute tolerances different for CDF vs. PDF?](#FAQ4)
+* [Where can I find the libraries tested?](#FAQ5)
+* [The literature is very inconsistent/fragmented with respect to parameterizing stable distributions. Are you sure the libraries are actually consistent in their calculations here?](#FAQ6)
+* [simple_quadrature _usually_ seems accurate. When/where is it inaccurate?](#FAQ7)
+* [simple_monte_carlo appears far slower in practice than listed here. Why?](#FAQ8)
+* [These methods vary greatly in their speed. What is a "good" average time per call?](#FAQ9)
+* [Some of the methods only appear in the PDF or CDF tests. Why?](#FAQ10)
+* [I know of a Python library that is missing from this benchmark. Can you add it?](#FAQ11)
 
-TODO: table of contents for FAQ?
-
+<a name = "FAQ1"></a>
 ##### How are "accuracy percentage" and "composite accuracy" defined?
 
 "Accuracy percentage" is the percentage of tabulated values computed to the
@@ -413,28 +422,44 @@ on *all* the test cases.
 tables. There are three tables each for PDF and CDF, so ~33% of the weighting
 goes to each.
 
+<a name = "FAQ2"></a>
 ##### Where did these PDF/CDF tables come from? Are they accurate?
 
-TODO: Nolan quantile table definitely has inaccuracies in the tails and issues from their rounding, but this needs more testing to verify
+These tables are obtained from Nolan's STABLE program, which has been the gold standard for computing this distribution's functions since its release.
 
+STABLE rounds certain inputs to avoid parameter regions where his method has difficulties. The specifics are complicated (see his README) and certain parts of his algorithm are undocumented, but can be partially reverse-engineered through his program's debug messages. Regardless, I believe these have very little affect on the overall accuracy of the tables.
+
+More imporantly, Nolan's methods have significant inaccuracies in the distribution tails for some parameter values. For instance, alpha=1.0 with nonzero beta often has an (incorrect) discontinuity, resulting in incorrect values beyond p=1% and p=99%.
+
+We plotted this specific issue in [a related scipy PR](https://github.com/scipy/scipy/pull/9523#issuecomment-683491485) and copy this inline below.
+
+![STABLE CDF inaccuracy near alpha=1](figures/STABLE_discontinuity_alpha_one.png)
+
+There are more inaccuracies further in the tails for other parameter values (notably as alpha gets smaller), but they are less impactful. For such parameter choices, Nolan's integrands become very pathological and are beyond the capabilities of most general quadrature routines.
+
+<a name = "FAQ3"></a>
 ##### What are some known limitations of this benchmark?
 
-TODO: beta < 0 implementation is assumed correct (by symmetry)
+Our tables lack beta < 0 values, so we implicitly assume that implementations handle negative beta values correctly. This distribution has a certain "symmetry" in beta, so one could easily test these values as well, but it would double the running time.
 
-TODO: behavior **very** far out (p < 0.00001) into the tails is not tested, but this is probably a minor concern in most applications
+The behavior **very** far out (p < 0.00001) into the tails is not tested, but this is probably a minor concern in most applications
 
+There are known errors in the tables that we use to test accuracy, but I believe this also has little effect (see the FAQ question on the PDF/CDF tables).
+
+<a name = "FAQ4"></a>
 ##### Why is the range of tested absolute tolerances different for CDF vs. PDF?
 
 This is an ad-hoc choice. It was assumed that absolute accuracies of 0.01 for the CDF and 0.0001 for the PDF are near the lower end of usefulness.
 
 It's worth noting that simply returning the normal distribution (with e.g. `norm.pdf(1, scale=sqrt(2))`) yields composite accuracies of ~20% and ~30% at this accuracy level for the PDF and CDF, respectively.
 
+<a name = "FAQ5"></a>
 ##### Where can I find the libraries tested?
 
 There are six methods tested here. See the links below and the code in [algorithms](algorithms).
 
- * Our simple methods
-   * [**simple_quadrature**](algorithms/simple_quadrature.py): direct numerical integration (TODO: reference the [integrand derivation](figures/simple_quadrature_derivation/simple_quadrature_derivation.pdf))
+ * Our simple methods (relatively "simple" compared to existing techniques)
+   * [**simple_quadrature**](algorithms/simple_quadrature.py): direct numerical integration based on our [integrand derivation directly from the characteristic function](figures/simple_quadrature_derivation/simple_quadrature_derivation.pdf)
    * [**simple_monte_carlo**](algorithms/simple_monte_carlo.py): monte carlo scheme based on the [Chambers-Mallows-Stuck method of simulating stable random variables](https://doi.org/10.1080%2F01621459.1976.10480344)
    * **larger_monte_carlo**: same as simple_monte_carlo, but with a sample size of 100 million
  * Scipy's methods (tested on version 1.5.2)
@@ -444,6 +469,7 @@ There are six methods tested here. See the links below and the code in [algorith
  * [**pylevy_miotto**](https://github.com/josemiotto/pylevy) (tested on commit [19fa983](https://github.com/josemiotto/pylevy/commit/19fa983437883f6abdb0ea59d1ea057cbc458c9c))
  * TODO: add the unofficial pystable_jones?
 
+<a name = "FAQ6"></a>
 ##### The literature is very inconsistent/fragmented with respect to parameterizing stable distributions. Are you sure the libraries are actually consistent in their calculations here?
 
 Mark Veillette says this well:
@@ -454,21 +480,26 @@ Mark Veillette says this well:
 
 To this end, we've written some [tests to prove our transformations are good](tests/parameterization_tests.py). At the moment, all the libraries here appear use either the S0 or S1 parameterization (in Nolan's notation).
 
+<a name = "FAQ7"></a>
 ##### simple_quadrature _usually_ seems accurate. When/where is it inaccurate?
 
-Most notably, simple_quadrature can completely fail near x = ? (TODO) and in the tails when the oscillatory components of the integrand become incredibly unwieldy.
+Most notably, simple_quadrature can completely fail near x = ? (TODO: this has been observed, but where and why?) and in the tails when the oscillatory components of the integrand become incredibly unwieldy.
 
-TODO: potential hybrid scheme with asymptotic tail laws? Should probably create a custom integrator for this purpose if accuracy is critical.
+One could probably create a hybrid scheme that uses known asymptotic tail results to improve accuracy here, though it's unclear how successful or performant such an approach would be.
 
+If accuracy is critical, one should really use a custom integrator for computing this distribution's functions as there are some nice properties of the integrands that so far have not been exploited. To date, only general quadrature routines have been used. Indeed, most of the significant issues in Nolan's STABLE program appear to arise due to numerical quadrature failures.
+
+<a name = "FAQ8"></a>
 ##### simple_monte_carlo appears far slower in practice than listed here. Why?
 
 simple_monte_carlo is an incredibly inefficient method for computing the CDF in general. It must generate new random samples for each unique pair of (alpha, beta) values.
 
 Here, the test tables include many repeated (alpha, beta) pairs, so the method appears to run more quickly *on average* than it otherwise might.
 
-##### These methods vary greatly in their speed. What is a "good" average time per call? 
+<a name = "FAQ9"></a>
+##### These methods vary greatly in their speed. What is a "good" average time per call?
 
-This is highly domain specific -- some applications might need very quick calculations and can tolerate large inaccuracies. Others might require high accuracy and have speed only as a secondary consideration. 
+This is highly domain specific -- some applications might need very quick calculations and can tolerate large inaccuracies. Others might require high accuracy and have speed only as a secondary consideration.
 
 The tests here were run on a machine with a i7-9700K (8 cores, stock, up to 4.9 GHz) CPU and 16 GB DDR4 3200 MHz of RAM.
 
@@ -478,10 +509,12 @@ Nolan claims to have
 
 which appears to suggest that an average time per call of <1 us (!) is "easily" feasible on modern hardware. However, this is several orders of magnitude faster than any of the methods tested here.
 
+<a name = "FAQ10"></a>
 ##### Some of the methods only appear in the PDF or CDF tests. Why?
 
 Some methods only support one or the other. In general, computing the CDF of this distribution is much easier than computing the PDF.
 
+<a name = "FAQ11"></a>
 ##### I know of a Python library that is missing from this benchmark. Can you add it?
 
 Yes (assuming its publicly available), please raise an issue and I'll try to add it.
