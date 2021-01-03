@@ -350,13 +350,13 @@ The average per-call (single-threaded) runtimes on the benchmark tables are as f
   <tr><td>simple_monte_carlo</td><td>0.085 ms<sup>*</sup></td><td>-</td></tr>
   <tr><td>scipy_best</td><td>3.58 ms</td><td>9.22 ms</td></tr>
   <tr><td>scipy_zolotarev</td><td>-</td><td>8.47 ms</td></tr>
-  <tr><td>scipy_quadrature</td><td>-</td><td>177 ms<sup>†</sup></td></tr>
+  <tr><td>scipy_quadrature</td><td>-</td><td>189 ms<sup>†</sup></td></tr>
   <tr><td>pylevy_miotto</td><td>1.93 ms</td><td>1.88 ms</td></tr>
 </table>
 
 <sup>*</sup> This method takes ~150 ms for single calls, but is very fast on repeated (alpha, beta) values. See [this FAQ question](#FAQ8) for more details.
 
-<sup>†</sup> Due to poor performance, this average runtime is estimated based on a random sample of 10% of the benchmark tables.
+<sup>†</sup> Due to poor performance, the single-threaded benchmark takes nearly 90 hours for scipy_quadrature.
 
 <a name = "FAQ"></a>
 ## FAQ: notes and limitations
