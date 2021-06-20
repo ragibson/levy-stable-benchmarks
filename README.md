@@ -392,7 +392,7 @@ goes to each.
 
 These tables are obtained from Nolan's STABLE program, which has been the gold standard for computing this distribution's functions since its release.
 
-STABLE rounds certain inputs to avoid parameter regions where his method has difficulties. The specifics are complicated (see his README) and certain parts of his algorithm are undocumented, but can be partially reverse-engineered through his program's debug messages. Regardless, I believe these have very little affect on the overall accuracy of the tables.
+STABLE rounds certain inputs to avoid parameter regions where his method has difficulties. The specifics are complicated (see his README) and certain parts of his algorithm are undocumented, but can be partially reverse-engineered through his program's debug messages. Regardless, I believe these have very little effect on the overall accuracy of the tables.
 
 More imporantly, Nolan's methods have significant inaccuracies in the distribution tails for some parameter values. For instance, alpha=1.0 with nonzero beta often has an (incorrect) discontinuity, resulting in incorrect values beyond p=1% and p=99%.
 
@@ -400,7 +400,7 @@ We plotted this specific issue in [a related scipy PR](https://github.com/scipy/
 
 ![STABLE CDF inaccuracy near alpha=1](figures/STABLE_discontinuity_alpha_one.png)
 
-We have also compiled [plots of all STABLE CDF errors larger than 1e-4](figures/STABLE_table_CDF_errors_larger_than_1e-4.pdf) in the tables that use the most recent version of the program (v3.14.02).
+We have also compiled [plots of all STABLE CDF errors larger than 1e-4](figures/STABLE_table_CDF_errors_larger_than_1e-4.pdf) in the tables that use the most recent (publicly available) version of the program (v3.14.02).
 
 There are more inaccuracies further in the tails for other parameter values (notably as alpha gets smaller), but they are less impactful. For such parameter choices, Nolan's integrands become very pathological and are beyond the capabilities of most general quadrature routines.
 
