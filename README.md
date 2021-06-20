@@ -400,6 +400,8 @@ We plotted this specific issue in [a related scipy PR](https://github.com/scipy/
 
 ![STABLE CDF inaccuracy near alpha=1](figures/STABLE_discontinuity_alpha_one.png)
 
+We have also compiled [plots of all STABLE CDF errors larger than 1e-4](figures/STABLE_table_CDF_errors_larger_than_1e-4.pdf) in the tables that use the most recent version of the program (v3.14.02).
+
 There are more inaccuracies further in the tails for other parameter values (notably as alpha gets smaller), but they are less impactful. For such parameter choices, Nolan's integrands become very pathological and are beyond the capabilities of most general quadrature routines.
 
 <a name = "FAQ3"></a>
