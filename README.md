@@ -11,7 +11,7 @@ such implementations. We also provide some alternative calculation methods.
 ![accuracy figures](figures/accuracy_figures.png)
 
 Among other things, this repository has helped to
- * Identify a typo in Theorem 1, case (d) of Nolan's original paper, [Numerical calculation of stable densities and distribution functions](https://www.tandfonline.com/doi/abs/10.1080/15326349708807450). Nolan has told me that this has been corrected in his new book.
+ * Identify a typo in Theorem 1, case (d) of Nolan's original paper, [Numerical calculation of stable densities and distribution functions](https://www.tandfonline.com/doi/abs/10.1080/15326349708807450). This is corrected in [Nolan's new textbook](https://www.springer.com/gp/book/9783030529147).
  * Further progress on [a scipy PR to improve stable distribution computations](https://github.com/scipy/scipy/pull/9523).
  * Identify [some issues in pylevy](https://github.com/josemiotto/pylevy/issues/15), a Python package for applications involving stable distributions.
 
@@ -402,6 +402,8 @@ We plotted this specific issue in [a related scipy PR](https://github.com/scipy/
 
 We have also compiled [plots of all STABLE CDF errors larger than 1e-4](figures/STABLE_table_CDF_errors_larger_than_1e-4.pdf) in the tables that use the most recent (publicly available) version of the program (v3.14.02).
 
+Nolan's published CDF/PDF quantiles table use a much older version of the program and contain other/larger inaccuracies.
+
 There are more inaccuracies further in the tails for other parameter values (notably as alpha gets smaller), but they are less impactful. For such parameter choices, Nolan's integrands become very pathological and are beyond the capabilities of most general quadrature routines.
 
 <a name = "FAQ3"></a>
@@ -484,4 +486,4 @@ Some methods only support one or the other. In general, computing the CDF of thi
 <a name = "FAQ11"></a>
 ##### I know of a Python library that is missing from this benchmark. Can you add it?
 
-Yes (assuming its publicly available), please raise an issue and I'll try to add it.
+Yes (assuming it's publicly available), please raise an issue and I'll try to add it.
