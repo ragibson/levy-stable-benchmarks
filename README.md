@@ -11,7 +11,7 @@ such implementations. We also provide some alternative calculation methods.
 ![accuracy figures](figures/accuracy_figures.png)
 
 Among other things, this repository has helped to
- * Identify a typo in Theorem 1, case (d) of Nolan's original paper, [Numerical calculation of stable densities and distribution functions](https://www.tandfonline.com/doi/abs/10.1080/15326349708807450). This is corrected in [Nolan's new textbook](https://www.springer.com/gp/book/9783030529147).
+ * Identify a typo in Theorem 1, case (d) of Nolan's original paper, [Numerical calculation of stable densities and distribution functions](https://www.tandfonline.com/doi/abs/10.1080/15326349708807450). This is corrected in [Nolan's new textbook](https://www.springer.com/us/book/9783030529147).
  * Further progress on [a scipy PR to improve stable distribution computations](https://github.com/scipy/scipy/pull/9523).
  * Identify [some issues in pylevy](https://github.com/josemiotto/pylevy/issues/15), a Python package for applications involving stable distributions.
 
