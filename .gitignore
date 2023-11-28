@@ -1,3 +1,16 @@
+# PyCharm IDE files
+.idea/
+
+# Any pickled files or saved output
+*.p
+*.out
+
+# Inclusion of pylevy_miotto library (if applicable)
+levy/
+
+# Explicitly tagged "_gitignore.*"
+*_gitignore.*
+
 # some LaTeX files
 *.aux
 *.synctex.gz
