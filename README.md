@@ -21,6 +21,8 @@ Among other things, this repository has helped to
  * [Average runtimes](#AverageRuntimes)
  * [FAQ, notes, and limitations](#FAQ)
 
+**NOTE: the `scipy_dni` method is omitted for now until its behavior is fixed in SciPy v1.12.0.**
+
 <a name = "CDFAccuracy"></a>
 ## CDF accuracy percentages
 

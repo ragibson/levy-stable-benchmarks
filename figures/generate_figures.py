@@ -10,8 +10,8 @@ if __name__ == "__main__":
         cdf_method_names = ["simple_quadrature", "simple_monte_carlo", "larger_monte_carlo", "scipy_piecewise",
                             "pylevy_miotto"]
 
-        pdf_methods = [simple_quadrature, scipy_piecewise, pylevy_miotto]
-        pdf_method_names = ["simple_quadrature", "scipy_piecewise", "pylevy_miotto"]
+        pdf_methods = [simple_quadrature, scipy_piecewise, scipy_dni, pylevy_miotto]
+        pdf_method_names = ["simple_quadrature", "scipy_piecewise", "scipy_dni", "pylevy_miotto"]
     except NameError as e:
         print(f"Your environment is missing method setup: {e}", file=sys.stderr)
         raise
