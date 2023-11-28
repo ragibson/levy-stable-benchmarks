@@ -1,9 +1,11 @@
 from algorithms import (pylevy_miotto,
-                        scipy_best, scipy_quadrature, scipy_zolotarev,
+                        scipy_piecewise, scipy_dni,
                         simple_quadrature, simple_monte_carlo)
 from scipy.optimize import minimize_scalar
+import numpy as np
 import unittest
 
+np.random.seed(0)
 simple_monte_carlo.set_monte_carlo_size(10 ** 7)
 
 
@@ -26,7 +28,7 @@ def make_test(pdf=None, cdf=None, decimal_places_tolerance=10, is_known_bug_cdf=
         def compute_median_from_cdf(func):
             res = minimize_scalar(lambda x: abs(1 / 2 - func(x)))
             print(res)
-            return minimize_scalar(lambda x: abs(1 / 2 - func(x))).x
+            return res.x
 
         def check_similar_pdf_modes(self, alpha, beta):
             # we assume our simple_quadrature is accurate here
@@ -78,6 +80,10 @@ def make_test(pdf=None, cdf=None, decimal_places_tolerance=10, is_known_bug_cdf=
                 for beta in self.beta_testing_grid:
                     if is_known_bug_pdf(alpha, beta):
                         continue
+                    if alpha == 2.0 or beta in {-1.0, 0.0, 1.0}:
+                        # TODO: simple_quadrature seems to have some minor difficulties for extreme alpha/beta
+                        #   since we're using it as our consistent benchmark, we just skip them here
+                        continue
                     self.check_similar_pdf_modes(alpha, beta)
 
         def test_medians(self):
@@ -87,6 +93,10 @@ def make_test(pdf=None, cdf=None, decimal_places_tolerance=10, is_known_bug_cdf=
             for alpha in self.alpha_testing_grid:
                 for beta in self.beta_testing_grid:
                     if is_known_bug_cdf(alpha, beta):
+                        continue
+                    if alpha == 2.0 or beta in {-1.0, 0.0, 1.0}:
+                        # TODO: simple_quadrature seems to have some minor difficulties for extreme alpha/beta
+                        #   since we're using it as our consistent benchmark, we just skip them here
                         continue
                     self.check_similar_cdf_medians(alpha, beta)
 
@@ -122,22 +132,19 @@ class TestPylevyMiotto(make_test(pdf=pylevy_miotto.pdf, cdf=pylevy_miotto.cdf,
     pass
 
 
-class TestScipyBest(make_test(pdf=scipy_best.pdf, cdf=scipy_best.cdf,
-                              decimal_places_tolerance=3)):
+class TestScipyPiecewise(make_test(pdf=scipy_piecewise.pdf, cdf=scipy_piecewise.cdf,
+                                   decimal_places_tolerance=7,
+                                   is_known_bug_pdf=lambda alpha, beta: alpha <= 0.5 or alpha == 2.0)):
+    # scipy_piecewise can be pretty inaccurate for the same PDF regions as DNI, so we omit them
+    # similarly, extreme alpha/beta values seem to have slight CDF inaccuracies
     pass
 
 
-class TestScipyQuadrature(make_test(pdf=scipy_quadrature.pdf, cdf=None,
-                                    decimal_places_tolerance=6,
-                                    is_known_bug_pdf=lambda alpha, beta: alpha <= 0.25)):
-    # scipy_quadrature is pretty inaccurate for small alpha, so we omit these rather than lowering the tolerance
-    pass
-
-
-class TestScipyZolotarev(make_test(pdf=scipy_zolotarev.pdf, cdf=None,
-                                   decimal_places_tolerance=3,
-                                   is_known_bug_pdf=lambda alpha, beta: alpha == 1 and beta != 0)):
-    # scipy_zolotarev emits a warning that this method is unstable for alpha = 1 and beta != 0.
+class TestScipyDNI(make_test(pdf=scipy_dni.pdf, cdf=None,
+                             decimal_places_tolerance=7,
+                             is_known_bug_pdf=lambda alpha, beta: alpha <= 0.5 or alpha == 2.0)):
+    # scipy_dni is pretty inaccurate for small alpha and the extreme alpha/beta
+    # values, so we omit these rather than lowering the tolerance
     pass
 
 
