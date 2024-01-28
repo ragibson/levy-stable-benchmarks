@@ -13,6 +13,7 @@ def pdf(x, alpha, beta):
 
 
 def cdf(x, alpha, beta):
+    levy_stable.cdf_default_method = "piecewise"
     if alpha != 1:
         x += beta * tan(pi * alpha / 2)
     return levy_stable.cdf(x, alpha, beta)
