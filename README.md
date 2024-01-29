@@ -21,8 +21,6 @@ Among other things, this repository has helped to
  * [Average runtimes](#AverageRuntimes)
  * [FAQ, notes, and limitations](#FAQ)
 
-**NOTE: the `scipy_dni` method is omitted for now until its behavior is fixed in SciPy v1.12.0.**
-
 <a name = "CDFAccuracy"></a>
 ## CDF accuracy percentages
 
@@ -37,11 +35,11 @@ Among other things, this repository has helped to
   </tr>
   <tr>
     <td>simple_monte_carlo</td>
-    <td>100.0%</td><td>99.9%</td><td>75.9%</td><td>24.8%</td>
+    <td>100.0%</td><td>98.9%</td><td>69.4%</td><td>21.3%</td>
   </tr>
   <tr>
     <td>larger_monte_carlo</td>
-    <td>100.0%</td><td>100.0%</td><td>98.5%</td><td>77.2%</td>
+    <td>100.0%</td><td>100.0%</td><td>99.6%</td><td>76.8%</td>
   </tr>
   <tr>
     <td>scipy_piecewise</td>
@@ -62,11 +60,11 @@ Among other things, this repository has helped to
   </tr>
   <tr>
     <td>simple_monte_carlo</td>
-    <td>94.7%</td><td>75.6%</td><td>60.3%</td><td>34.7%</td>
+    <td>91.8%</td><td>80.5%</td><td>55.7%</td><td>34.0%</td>
   </tr>
   <tr>
     <td>larger_monte_carlo</td>
-    <td>99.5%</td><td>93.8%</td><td>77.6%</td><td>55.0%</td>
+    <td>99.6%</td><td>94.6%</td><td>80.1%</td><td>58.6%</td>
   </tr>
   <tr>
     <td>scipy_piecewise</td>
@@ -89,11 +87,11 @@ Among other things, this repository has helped to
   </tr>
   <tr>
     <td>simple_monte_carlo</td>
-    <td>100.0%</td><td>98.0%</td><td>13.8%</td><td>1.5%</td>
+    <td>100.0%</td><td>95.1%</td><td>15.4%</td><td>1.6%</td>
   </tr>
   <tr>
     <td>larger_monte_carlo</td>
-    <td>100.0%</td><td>100.0%</td><td>95.1%</td><td>19.0%</td>
+    <td>100.0%</td><td>100.0%</td><td>99.9%</td><td>36.3%</td>
   </tr>
   <tr>
     <td>scipy_piecewise</td>
@@ -114,11 +112,11 @@ Among other things, this repository has helped to
   </tr>
   <tr>
     <td>simple_monte_carlo</td>
-    <td>100.0%</td><td>98.9%</td><td>51.1%</td><td>8.1%</td>
+    <td>100.0%</td><td>99.5%</td><td>49.9%</td><td>9.1%</td>
   </tr>
   <tr>
     <td>larger_monte_carlo</td>
-    <td>100.0%</td><td>99.9%</td><td>98.1%</td><td>55.2%</td>
+    <td>100.0%</td><td>99.9%</td><td>99.6%</td><td>81.2%</td>
   </tr>
   <tr>
     <td>scipy_piecewise</td>
@@ -141,11 +139,11 @@ Among other things, this repository has helped to
   </tr>
   <tr>
     <td>simple_monte_carlo</td>
-    <td>99.4%</td><td>98.0%</td><td>42.8%</td><td>16.0%</td>
+    <td>99.4%</td><td>96.5%</td><td>42.1%</td><td>11.6%</td>
   </tr>
   <tr>
     <td>larger_monte_carlo</td>
-    <td>99.4%</td><td>99.1%</td><td>96.2%</td><td>42.9%</td>
+    <td>99.4%</td><td>99.1%</td><td>98.9%</td><td>55.0%</td>
   </tr>
   <tr>
     <td>scipy_piecewise</td>
@@ -166,11 +164,11 @@ Among other things, this repository has helped to
   </tr>
   <tr>
     <td>simple_monte_carlo</td>
-    <td>97.1%</td><td>85.8%</td><td>51.7%</td><td>23.4%</td>
+    <td>94.3%</td><td>87.5%</td><td>50.9%</td><td>21.6%</td>
   </tr>
   <tr>
     <td>larger_monte_carlo</td>
-    <td>99.4%</td><td>95.0%</td><td>85.2%</td><td>53.9%</td>
+    <td>99.4%</td><td>96.6%</td><td>87.2%</td><td>68.7%</td>
   </tr>
   <tr>
     <td>scipy_piecewise</td>
@@ -199,6 +197,10 @@ Among other things, this repository has helped to
     <td>99.9%</td><td>99.8%</td><td>99.8%</td><td>99.8%</td>
   </tr>
   <tr>
+    <td>scipy_dni</td>
+    <td>87.5%</td><td>87.5%</td><td>87.5%</td><td>87.5%</td>
+  </tr>
+  <tr>
     <td>pylevy_miotto</td>
     <td>90.8%</td><td>79.8%</td><td>67.7%</td><td>37.5%</td>
   </tr>
@@ -214,6 +216,10 @@ Among other things, this repository has helped to
   <tr>
     <td>scipy_piecewise</td>
     <td>99.3%</td><td>99.3%</td><td>99.3%</td><td>99.3%</td>
+  </tr>
+  <tr>
+    <td>scipy_dni</td>
+    <td>84.0%</td><td>84.0%</td><td>84.0%</td><td>84.0%</td>
   </tr>
   <tr>
     <td>pylevy_miotto</td>
@@ -235,6 +241,10 @@ Among other things, this repository has helped to
     <td>99.9%</td><td>99.8%</td><td>99.8%</td><td>99.8%</td>
   </tr>
   <tr>
+    <td>scipy_dni</td>
+    <td>67.6%</td><td>67.5%</td><td>67.5%</td><td>67.5%</td>
+  </tr>
+  <tr>
     <td>pylevy_miotto</td>
     <td>85.4%</td><td>82.5%</td><td>77.5%</td><td>55.9%</td>
   </tr>
@@ -250,6 +260,10 @@ Among other things, this repository has helped to
   <tr>
     <td>scipy_piecewise</td>
     <td>99.9%</td><td>99.9%</td><td>99.9%</td><td>99.8%</td>
+  </tr>
+  <tr>
+    <td>scipy_dni</td>
+    <td>67.0%</td><td>66.7%</td><td>66.6%</td><td>66.5%</td>
   </tr>
   <tr>
     <td>pylevy_miotto</td>
@@ -271,6 +285,10 @@ Among other things, this repository has helped to
     <td>99.9%</td><td>99.8%</td><td>99.7%</td><td>99.6%</td>
   </tr>
   <tr>
+    <td>scipy_dni</td>
+    <td>64.5%</td><td>64.5%</td><td>64.5%</td><td>64.5%</td>
+  </tr>
+  <tr>
     <td>pylevy_miotto</td>
     <td>91.9%</td><td>87.0%</td><td>77.9%</td><td>54.4%</td>
   </tr>
@@ -288,6 +306,10 @@ Among other things, this repository has helped to
     <td>99.1%</td><td>99.1%</td><td>99.0%</td><td>99.0%</td>
   </tr>
   <tr>
+    <td>scipy_dni</td>
+    <td>58.5%</td><td>57.8%</td><td>57.6%</td><td>57.1%</td>
+  </tr>
+  <tr>
     <td>pylevy_miotto</td>
     <td>88.3%</td><td>79.8%</td><td>67.5%</td><td>55.3%</td>
   </tr>
@@ -300,14 +322,14 @@ The average per-call (single-threaded) runtimes on the benchmark tables are as f
 
 <table>
   <tr><td>Method</td><td>CDF average runtime</td><td>PDF average runtime</td></tr>
-  <tr><td>simple_quadrature</td><td>2.14 ms</td><td>1.75 ms</td></tr>
-  <tr><td>simple_monte_carlo</td><td>0.057 ms<sup>*</sup></td><td>-</td></tr>
-  <tr><td>scipy_piecewise</td><td>0.68 ms</td><td>1.11 ms</td></tr>
-  <tr><td>scipy_dni</td><td>-</td><td>1.07 ms</td></tr>
-  <tr><td>pylevy_miotto</td><td>1.19 ms</td><td>1.18 ms</td></tr>
+  <tr><td>simple_quadrature</td><td>2.18 ms</td><td>1.77 ms</td></tr>
+  <tr><td>simple_monte_carlo</td><td>0.055 ms<sup>*</sup></td><td>-</td></tr>
+  <tr><td>scipy_piecewise</td><td>0.70 ms</td><td>1.15 ms</td></tr>
+  <tr><td>scipy_dni</td><td>-</td><td>4.89 ms</td></tr>
+  <tr><td>pylevy_miotto</td><td>1.23 ms</td><td>1.22 ms</td></tr>
 </table>
 
-<sup>*</sup> This method takes ~150 ms for single calls, but is very fast on repeated (alpha, beta) values. See [this FAQ question](#FAQ8) for more details.
+<sup>*</sup> This method takes ~100-150 ms for single calls, but is very fast on repeated (alpha, beta) values. See [this FAQ question](#FAQ8) for more details.
 
 <a name = "FAQ"></a>
 ## FAQ: notes and limitations
@@ -382,8 +404,8 @@ There are six methods tested here. See the links below and the code in [algorith
    * [**simple_quadrature**](algorithms/simple_quadrature.py): direct numerical integration based on our [integrand derivation directly from the characteristic function](figures/simple_quadrature_derivation/simple_quadrature_derivation.pdf)
    * [**simple_monte_carlo**](algorithms/simple_monte_carlo.py): monte carlo scheme based on the [Chambers-Mallows-Stuck method of simulating stable random variables](https://doi.org/10.1080%2F01621459.1976.10480344)
    * **larger_monte_carlo**: same as simple_monte_carlo, but with a sample size of 100 million
- * Scipy's methods (tested on version 1.11.4)
-   * [**scipy_piecewise**](https://docs.scipy.org/doc/scipy/reference/generated/scipy.stats.levy_stable.html) with `pdf_default_method = "piecewise"`
+ * Scipy's methods (tested on version 1.12.0)
+   * [**scipy_piecewise**](https://docs.scipy.org/doc/scipy/reference/generated/scipy.stats.levy_stable.html) with `pdf_default_method = "piecewise"` and `cdf_default_method = "piecewise"`
    * [**scipy_dni**](https://docs.scipy.org/doc/scipy/reference/generated/scipy.stats.levy_stable.html) with `pdf_default_method = "dni"`
  * [**pylevy_miotto**](https://github.com/josemiotto/pylevy) (tested on commit [d6b855e](https://github.com/josemiotto/pylevy/commit/d6b855ef2ff959db7c4002c1b39b98bd968f60b0))
  * TODO: add the unofficial pystable_jones?

@@ -73,7 +73,7 @@ if __name__ == "__main__":
         plt.xticks([10 ** i for i in range(tol_range[1], tol_range[0] + 1)])  # label all powers of 10
         plt.gca().invert_xaxis()  # make tolerances decrease to the right
         plt.legend()
-        plt.ylim([70, 101])  # plot 70% to slightly above 100% accuracies
+        plt.ylim([60, 101])  # plot 60% to slightly above 100% accuracies
         plt.xlabel("Absolute tolerance" if use_absolute_tolerances else "Relative tolerance")
         plt.ylabel("Composite accuracy percentage")
         plt.title(f"{density_function} {'absolute' if use_absolute_tolerances else 'relative'} "
